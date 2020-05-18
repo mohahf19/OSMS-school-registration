@@ -13,10 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//For bilal's testing
+Route::get('/test', function () {return view('scheduled-exams');});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

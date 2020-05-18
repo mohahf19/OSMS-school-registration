@@ -22,6 +22,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    @yield('header')
+
 </head>
 
 <body>
@@ -525,7 +527,9 @@
                     </div>
                 </div>
             </div>
-            @yield('content')
+            <div class="app-main__outer">
+                @yield('content')
+            </div>
             <div class="app-wrapper-footer">
                 <div class="app-footer">
                     <div class="app-footer__inner">
@@ -561,6 +565,7 @@
     </div>
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('scripts/main.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>
