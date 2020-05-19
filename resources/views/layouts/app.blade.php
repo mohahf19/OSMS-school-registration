@@ -118,9 +118,12 @@
                                     </div>
                                 </div>
                                 <div class="widget-content-right header-user-info ml-3">
-                                    <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                        <i class="fa text-white fa-calendar pr-1 pl-1"></i>
-                                    </button>
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                            <i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
