@@ -15,6 +15,11 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('user_id');
+            $table->string('type');
+            $table->string('delivery_method');
+            $table->string('address');
             $table->timestamps();
         });
     }

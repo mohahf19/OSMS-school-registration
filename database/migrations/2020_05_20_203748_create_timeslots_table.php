@@ -15,6 +15,11 @@ class CreateTimeslotsTable extends Migration
     {
         Schema::create('timeslots', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('day');
+            $table->integer('start_time');
+            $table->integer('end_time');
+
             $table->timestamps();
         });
     }

@@ -15,6 +15,21 @@ class CreateAssessmentsTable extends Migration
     {
         Schema::create('assessments', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('course_id');
+
+            $table->string('type');
+            $table->string('name');
+
+            $table->date('date');
+            $table->string('start_time');
+            $table->string('end_time');
+
+            $table->integer('max_grade');
+            $table->integer('percentage');
+
+            $table->string('location');
+
             $table->timestamps();
         });
     }
