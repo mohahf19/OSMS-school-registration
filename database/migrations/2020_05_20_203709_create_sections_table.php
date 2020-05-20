@@ -17,6 +17,9 @@ class CreateSectionsTable extends Migration
             $table->id();
 
             $table->integer('course_id');
+
+            $table->integer('section_code');
+            $table->integer('instructor_id');
             
             $table->string('classroom');
             $table->integer('quota');
