@@ -433,15 +433,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="app-header__menu">
-                    <span>
-                        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                            <span class="btn-icon-wrapper">
-                                <i class="fa fa-ellipsis-v fa-w-6"></i>
-                            </span>
-                        </button>
-                    </span>
-                </div>
+                @if( $user->login_type == 1)
+
                 <div class="scrollbar-sidebar">
                     <div class="app-sidebar__inner">
                         <ul class="vertical-nav-menu">
@@ -530,40 +523,231 @@
                     </div>
                 </div>
             </div>
-            <div class="app-main__outer">
-                @yield('content')
-            </div>
-            <div class="app-wrapper-footer">
-                <div class="app-footer">
-                    <div class="app-footer__inner">
-                        <div class="app-footer-left">
-                            <ul class="nav">
-                                <li class="nav-item">
-                                    <a href="javascript:void(0);" class="nav-link">
-                                        Contact
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="javascript:void(0);" class="nav-link">
-                                        Report Us
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="app-footer-right">
-                            <ul class="nav">
-                                <li class="nav-item">
-                                    <a href="javascript:void(0);" class="nav-link">
-                                        Webmail
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            @elseif( $user->login_type == 2)
+            <div class="scrollbar-sidebar">
+                <div class="app-sidebar__inner">
+                    <ul class="vertical-nav-menu">
+                        <li class="app-sidebar__heading">Dashboards</li>
+                        <li>
+                            <a href="index.html" class="mm-active">
+                                <i class="metismenu-icon pe-7s-home"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li class="app-sidebar__heading">Academic</li>
+                        <li>
+                            <a href="#">
+                                <i class="metismenu-icon pe-7s-angle-right"></i>
+                                Current Courses
+                            </a>
+                        <li>
+                            <a href="#">
+                                <i class="metismenu-icon pe-7s-angle-right"></i>
+                                Course Registration
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="metismenu-icon pe-7s-angle-right"></i>
+                                GPA Calculator
+                            </a>
+
+                        </li>
+
+                        <li class="app-sidebar__heading">Information</li>
+                        <li>
+                            <a href="dashboard-boxes.html">
+                                <i class="metismenu-icon pe-7s-angle-right"></i>
+                                Scheduled Exams
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-boxes.html">
+                                <i class="metismenu-icon pe-7s-angle-right"></i>
+                                Current Transcript
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-boxes.html">
+                                <i class="metismenu-icon pe-7s-angle-right"></i>
+                                Activities
+                            </a>
+                        </li>
+                        <li class="app-sidebar__heading">Document Order</li>
+                        <li>
+                            <a href="forms-controls.html">
+                                <i class="metismenu-icon pe-7s-angle-right">
+                                </i>Transcript
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-controls.html">
+                                <i class="metismenu-icon pe-7s-angle-right">
+                                </i>Student Certificate
+                            </a>
+                        </li>
+
+                        <li class="app-sidebar__heading">Others</li>
+                        <li>
+                            <a href="charts-chartjs.html">
+                                <i class="metismenu-icon pe-7s-angle-right">
+                                </i>Dormitory
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-chartjs.html">
+                                <i class="metismenu-icon pe-7s-angle-right">
+                                </i>Meals
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-chartjs.html">
+                                <i class="metismenu-icon pe-7s-angle-right">
+                                </i>Payments
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
             </div>
         </div>
-        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+        @elseif( $user->login_type == 3)
+        <div class="scrollbar-sidebar">
+            <div class="app-sidebar__inner">
+                <ul class="vertical-nav-menu">
+                    <li class="app-sidebar__heading">Dashboards</li>
+                    <li>
+                        <a href="index.html" class="mm-active">
+                            <i class="metismenu-icon pe-7s-home"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Academic</li>
+                    <li>
+                        <a href="#">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            Current Courses
+                        </a>
+                    <li>
+                        <a href="#">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            Course Registration
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            GPA Calculator
+                        </a>
+
+                    </li>
+
+                    <li class="app-sidebar__heading">Information</li>
+                    <li>
+                        <a href="dashboard-boxes.html">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            Scheduled Exams
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard-boxes.html">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            Current Transcript
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard-boxes.html">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            Activities
+                        </a>
+                    </li>
+                    <li class="app-sidebar__heading">Document Order</li>
+                    <li>
+                        <a href="forms-controls.html">
+                            <i class="metismenu-icon pe-7s-angle-right">
+                            </i>Transcript
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forms-controls.html">
+                            <i class="metismenu-icon pe-7s-angle-right">
+                            </i>Student Certificate
+                        </a>
+                    </li>
+
+                    <li class="app-sidebar__heading">Others</li>
+                    <li>
+                        <a href="charts-chartjs.html">
+                            <i class="metismenu-icon pe-7s-angle-right">
+                            </i>Dormitory
+                        </a>
+                    </li>
+                    <li>
+                        <a href="charts-chartjs.html">
+                            <i class="metismenu-icon pe-7s-angle-right">
+                            </i>Meals
+                        </a>
+                    </li>
+                    <li>
+                        <a href="charts-chartjs.html">
+                            <i class="metismenu-icon pe-7s-angle-right">
+                            </i>Payments
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @endif
+    <div class="app-header__menu">
+        <span>
+            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                <span class="btn-icon-wrapper">
+                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                </span>
+            </button>
+        </span>
+    </div>
+
+    <div class="app-main__outer">
+        @yield('content')
+    </div>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-left">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                Contact
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                Report Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="app-footer-right">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                Webmail
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     </div>
     </div>
     <!-- Scripts -->

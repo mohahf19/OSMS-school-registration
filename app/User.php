@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'login_type',
     ];
 
     /**
@@ -36,4 +36,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userRole(){
+        switch( $this->login_type){
+            case 1:{
+                return Student::where('user_id', $this->id)->first();
+            }
+            case 2:{
+                return TA::where('user_id', $this->id)->first();
+            }
+            case 3:{
+                return Instructor::where('user_id', $this->id)->first();
+            }
+        }
+    }
 }
