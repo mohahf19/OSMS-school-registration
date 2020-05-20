@@ -317,7 +317,7 @@
                 <p>Welcome back! Log in to your account to view today's clients:</p>
                 <div class="floating-label">
                     <input type="hidden" name="login_type" id="login-type" value="1" />
-                    <input placeholder="ID" type="text" name="email" id="email" value="{{ old('email') }}" required>
+                    <input placeholder="ID" type="number" name="email" id="email" value="{{ old('email') }}" required>
                     <label for="email">ID:</label>
                     <div class="icon">
                         <svg enable-background="new 0 0 100 100" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
