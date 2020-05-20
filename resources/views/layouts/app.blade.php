@@ -538,56 +538,38 @@
                         <li>
                             <a href="#">
                                 <i class="metismenu-icon pe-7s-angle-right"></i>
-                                Current Courses
-                            </a>
-                        <li>
-                            <a href="#">
-                                <i class="metismenu-icon pe-7s-angle-right"></i>
-                                Course Registration
+                                Q&A Session
                             </a>
 
                         </li>
                         <li>
                             <a href="#">
                                 <i class="metismenu-icon pe-7s-angle-right"></i>
-                                GPA Calculator
+                                Attendance
+                            </a>
+
+                        </li>
+                         <li>
+                            <a href="#">
+                                <i class="metismenu-icon pe-7s-angle-right"></i>
+                                Grade
                             </a>
 
                         </li>
 
                         <li class="app-sidebar__heading">Information</li>
                         <li>
-                            <a href="dashboard-boxes.html">
+                            <a href="#">
                                 <i class="metismenu-icon pe-7s-angle-right"></i>
-                                Scheduled Exams
-                            </a>
-                        </li>
-                        <li>
-                            <a href="dashboard-boxes.html">
-                                <i class="metismenu-icon pe-7s-angle-right"></i>
-                                Current Transcript
+                                View Courses
                             </a>
                         </li>
                         <li>
                             <a href="dashboard-boxes.html">
                                 <i class="metismenu-icon pe-7s-angle-right"></i>
-                                Activities
+                                View Sections
                             </a>
-                        </li>
-                        <li class="app-sidebar__heading">Document Order</li>
-                        <li>
-                            <a href="forms-controls.html">
-                                <i class="metismenu-icon pe-7s-angle-right">
-                                </i>Transcript
-                            </a>
-                        </li>
-                        <li>
-                            <a href="forms-controls.html">
-                                <i class="metismenu-icon pe-7s-angle-right">
-                                </i>Student Certificate
-                            </a>
-                        </li>
-
+                        </li>   
                         <li class="app-sidebar__heading">Others</li>
                         <li>
                             <a href="charts-chartjs.html">
@@ -628,53 +610,45 @@
                     <li>
                         <a href="#">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
-                            Current
-                        </a>
-                    <li>
-                        <a href="#">
-                            <i class="metismenu-icon pe-7s-angle-right"></i>
                             Q&A Session
                         </a>
 
                     </li>
                     <li>
+                        <a href="dashboard-boxes.html">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            Attendance 
+                        </a>
+                    </li>
+                    <li>
                         <a href="#">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
-                            GPA Calculator
+                            Grades
                         </a>
-
                     </li>
-
+                    <li>
+                        <a href="dashboard-boxes.html">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            Assign TA 
+                        </a>
+                    </li>
                     <li class="app-sidebar__heading">Information</li>
                     <li>
-                        <a href="dashboard-boxes.html">
+                        <a href="#">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
-                            Scheduled Exams
-                        </a>
-                    </li>
-                    <li>
-                        <a href="dashboard-boxes.html">
-                            <i class="metismenu-icon pe-7s-angle-right"></i>
-                            Current Transcript
+                            View Courses
                         </a>
                     </li>
                     <li>
                         <a href="dashboard-boxes.html">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
-                            Activities
-                        </a>
-                    </li>
-                    <li class="app-sidebar__heading">Document Order</li>
-                    <li>
-                        <a href="forms-controls.html">
-                            <i class="metismenu-icon pe-7s-angle-right">
-                            </i>Transcript
+                            View Sections
                         </a>
                     </li>
                     <li>
-                        <a href="forms-controls.html">
-                            <i class="metismenu-icon pe-7s-angle-right">
-                            </i>Student Certificate
+                        <a href="dashboard-boxes.html">
+                            <i class="metismenu-icon pe-7s-angle-right"></i>
+                            View TA Information
                         </a>
                     </li>
 
