@@ -111,10 +111,10 @@
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        Bilal Bin Khalid
+                                        {{$user->name}} {{$user->surname}}
                                     </div>
                                     <div class="widget-subheading">
-                                        21701834
+                                        {{$user->id}}
                                     </div>
                                 </div>
                                 <div class="widget-content-right header-user-info ml-3">
