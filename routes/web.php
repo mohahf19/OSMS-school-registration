@@ -20,9 +20,10 @@ Route::get('/test', function () {return view('dormitories-page');});
 //For Auth
 Route::get('/login', 'LoginController@index')->name('login-index');
 Route::post('/login', 'LoginController@login')->name('login');
+Route::post('/logout', 'LoginController@logout')->name('logout');
 
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', 'HomeController@index')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

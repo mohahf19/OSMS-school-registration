@@ -2,38 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Instructor;
 use App\Student;
+use App\TA;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use SebastianBergmann\Environment\Console;
 
 class LoginController extends Controller
 {
-    public function index( Request$request){
+    public function index( Request $request){
         if( Auth::user()){
             return Redirect::to('/home');
         } else {
             return view('auth.login');
         }
     }
+    
+    public function logout(){
+        Auth::logout();
+        return Redirect::to('/login');
+    }
     public function login( Request $request)
     {
         switch ($request->login_type){
-            case 1:
-                $student = Student::where('user_id', $request->id)->first();
-                if( $student && $student->user()->password == md5($request->password)){
+            case 1: {
+                $student = Student::where('user_id', $request->email)->first();
+                if( $student && Hash::check($request->password, $student->user->password)){
                     Auth::login($student->user);
-                    return Redirect::to('/home');
+                    return redirect('/home');
+                } else {
+                    return Redirect::to('/login')->withErrors('invalidLogin');
                 }
                 break;
-            case 2:
-            break;
-            case 3:
-            break;
-            default:
-                return Redirect::to('/login')->with('errors', ["Invalid login credentials"]);
+            }
+            case 2:{
+                $ta = TA::where('user_id', $request->email)->first();
+                if( $ta && Hash::check($request->password, $ta->user->password)){
+                    Auth::login($ta->user);
+                    return redirect('/home');
+                } else {
+                    return Redirect::to('/login')->withErrors('invalidLogin');
+                }
                 break;
+            }
+            case 3:{
+                $ins = Instructor::where('user_id', $request->email)->first();
+                if( $ins && Hash::check($request->password, $ins->user->password)){
+                    Auth::login($ins->user);
+                    return redirect('/home');
+                } else {
+                    return Redirect::to('/login')->withErrors('invalidLogin');
+                }
+                break;
+            }
+            default:{
+                return Redirect::to('/login')->withErrors('invalidLogin');
+                break;
+            }
         }
         
     }
