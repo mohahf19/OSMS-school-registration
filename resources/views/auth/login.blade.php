@@ -273,14 +273,20 @@
                 case 1:
                     $("#toggle-text").text("Student")
                     $("#login-type").val(1)
+                    $("#email").val(22001000)
+                    $("#password").val('testtest')
                     break;
                 case 2:
                     $("#toggle-text").text("TA")
                     $("#login-type").val(2)
+                    $("#email").val(22001001)
+                    $("#password").val('testtest')
                     break;
                 case 3:
                     $("#toggle-text").text("Teacher")
                     $("#login-type").val(3)
+                    $("#email").val(22001002)
+                    $("#password").val('testtest')
                     break;
             }
         }
@@ -317,7 +323,7 @@
                 <p>Welcome back! Log in to your account to view today's clients:</p>
                 <div class="floating-label">
                     <input type="hidden" name="login_type" id="login-type" value="1" />
-                    <input placeholder="ID" type="number" name="email" id="email" value="{{ old('email') }}" required>
+                    <input placeholder="ID" type="number" name="email" id="email" value="22001000" required>
                     <label for="email">ID:</label>
                     <div class="icon">
                         <svg enable-background="new 0 0 100 100" version="1.1" viewBox="0 0 100 100" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
@@ -340,7 +346,7 @@
                 </span>
                 @endif
                 <div class="floating-label">
-                    <input placeholder="Password" type="password" name="password" id="password" autocomplete="off">
+                    <input placeholder="Password" type="password" name="password" id="password" value="testtest" autocomplete="off">
                     <label for="password">Password:</label>
                     <div class="icon">
 
