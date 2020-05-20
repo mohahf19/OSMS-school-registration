@@ -628,12 +628,12 @@
                     <li>
                         <a href="#">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
-                            Current Courses
+                            Current
                         </a>
                     <li>
                         <a href="#">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
-                            Course Registration
+                            Q&A Session
                         </a>
 
                     </li>

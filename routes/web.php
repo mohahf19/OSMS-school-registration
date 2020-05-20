@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //For bilal's testing
-Route::get('/test', function () {return view('dormitories-page');});
+Route::get('/test', function () {return view('ta-dashboard');});
 
 //For Auth
 Route::get('/login', 'LoginController@index')->name('login-index');
