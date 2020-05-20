@@ -34,7 +34,8 @@ class LoginController extends Controller
                 if( $student && Hash::check($request->password, $student->user->password)){
                     $user = $student->user;
                     Auth::login($user);
-                    $user->update(['login_type', 2]);
+                    // $user->update(['login_type', 1]);
+                    $user->login_type = 1;
                     $user->save();
                     return redirect('/home');
                 } else {
@@ -47,7 +48,8 @@ class LoginController extends Controller
                 if( $ta && Hash::check($request->password, $ta->user->password)){
                     $user = $ta->user;
                     Auth::login($user);
-                    $user->update(['login_type', 2]);
+                    // $user->update(['login_type', 2]);
+                    $user->login_type = 2;
                     $user->save();
                     return redirect('/home');
                 } else {
@@ -60,7 +62,8 @@ class LoginController extends Controller
                 if( $ins && Hash::check($request->password, $ins->user->password)){
                     $user = $ins->user;
                     Auth::login($user);
-                    $user->update(['login_type', 2]);
+                    // $user->update(['login_type', 3]);
+                    $user->login_type = 3;
                     $user->save();
                     return redirect('/home');
                 } else {
