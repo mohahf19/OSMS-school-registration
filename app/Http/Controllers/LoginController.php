@@ -32,9 +32,10 @@ class LoginController extends Controller
             case 1: {
                 $student = Student::where('user_id', $request->email)->first();
                 if( $student && Hash::check($request->password, $student->user->password)){
-                    Auth::login($student->user);
-                    $student->user->update(['login_type', 1]);
-                    $student->user->save();
+                    $user = $student->user;
+                    Auth::login($user);
+                    $user->update(['login_type', 2]);
+                    $user->save();
                     return redirect('/home');
                 } else {
                     return Redirect::to('/login')->withErrors('invalidLogin');
@@ -44,9 +45,10 @@ class LoginController extends Controller
             case 2:{
                 $ta = TA::where('user_id', $request->email)->first();
                 if( $ta && Hash::check($request->password, $ta->user->password)){
-                    Auth::login($ta->user);
-                    $ta->user->update(['login_type', 2]);
-                    $ta->user->save();
+                    $user = $ta->user;
+                    Auth::login($user);
+                    $user->update(['login_type', 2]);
+                    $user->save();
                     return redirect('/home');
                 } else {
                     return Redirect::to('/login')->withErrors('invalidLogin');
@@ -56,9 +58,10 @@ class LoginController extends Controller
             case 3:{
                 $ins = Instructor::where('user_id', $request->email)->first();
                 if( $ins && Hash::check($request->password, $ins->user->password)){
-                    Auth::login($ins->user);
-                    $ins->user->update(['login_type', 3]);
-                    $ins->user->save();
+                    $user = $ins->user;
+                    Auth::login($user);
+                    $user->update(['login_type', 2]);
+                    $user->save();
                     return redirect('/home');
                 } else {
                     return Redirect::to('/login')->withErrors('invalidLogin');
