@@ -19,7 +19,10 @@ class CreateAttendancesTable extends Migration
             $table->integer("student_id");
             $table->integer("course_id");
             $table->integer("section_id");
+            $table->integer("semester_id");
+            $table->integer("week_no");
             $table->integer("attendance_count");
+            $table->integer("total_count");
 
             $table->timestamps();
         });
