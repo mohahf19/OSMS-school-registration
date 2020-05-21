@@ -21,32 +21,37 @@ class HomeController extends Controller
         $user = Auth::user();
         $userrole = $user->userRole();
 
-        //get courses
-       $courses = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
-       $todays_courses = collect(new Course);
-       $todays_sections = collect(new Section);
-        $todays_slots = collect(new Timeslot);
+        if ($user->login_type == 1) {
+            //get courses
+            $courses = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
+            $todays_courses = collect(new Course);
+            $todays_sections = collect(new Section);
+            $todays_slots = collect(new Timeslot);
 
-       foreach ($courses as $c){
-           $secs = Section::all()->where('course_id', $c->course_id)
-                                    ->where('section_code', $c->section_id);
-            if (! $secs->isEmpty()){
-                $t = $secs->first()->timeslot_id;
-                
-                //get available time slots
-                $ts = Timeslot::all()->where('id', $t)->where('day', idate('w'));
+            foreach ($courses as $c) {
+                $secs = Section::all()->where('course_id', $c->course_id)
+                    ->where('section_code', $c->section_id);
+                if (!$secs->isEmpty()) {
+                    $t = $secs->first()->timeslot_id;
 
-                //if there is today
-                if (! $ts ->isEmpty()){
-                    $todays_sections->push($secs->first());
-                    $todays_courses->push((Course::all()->where('id', $c->course_id)->first()));
-                    $todays_slots->push($ts->first());
+                    //get available time slots
+                    $ts = Timeslot::all()->where('id', $t);
+
+                    //if there is today
+                    if (!$ts->isEmpty()) {
+                        $todays_sections->push($secs->first());
+                        $todays_courses->push((Course::all()->where('id', $c->course_id)->first()));
+                        $todays_slots->push($ts->first());
+                    }
                 }
             }
-            
-       }
-        return view('home', ['userrole' => $userrole, 'user' => $user, 'todays_sections'=>$todays_sections,
-                    'todays_courses'=>$todays_courses, 'todays_slots'=>$todays_slots]);
+            return view('student-home', [
+                'userrole' => $userrole, 'user' => $user, 'todays_sections' => $todays_sections,
+                'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots
+            ]);
+        } else if ($user->login_type == 2) {
+        } else {
+        }
     }
 
     public function courses()
@@ -55,91 +60,98 @@ class HomeController extends Controller
         $user = Auth::user();
         $userrole = $user->userRole();
         return view('course-registration', ['courses' => $courses, 'userrole' => $userrole, 'user' => $user]);
-
     }
-    public function courseSections( $course_id)
+    public function courseSections($course_id)
     {
         $course = Course::where('id', $course_id)->first();
         $sections = Section::where('course_id', $course_id)->get();
-        if( $sections && $course){
+        if ($sections && $course) {
             $user = Auth::user();
             $userrole = $user->userRole();
             return view('section-registration', ['sections' => $sections, 'course' => $course, 'userrole' => $userrole, 'user' => $user]);
         }
     }
-    
-    public function meals(){
+
+    public function meals()
+    {
         $user = Auth::user();
-        return view ('meals-page', compact('user'));
+        return view('meals-page', compact('user'));
     }
 
-    public function dorms(){
+    public function dorms()
+    {
         $user = Auth::user();
-        return view ('dormitories-page', compact('user'));
+        return view('dormitories-page', compact('user'));
     }
 
-    public function payments(){
+    public function payments()
+    {
         $user = Auth::user();
-        return view ('payments', compact('user'));
+        return view('payments', compact('user'));
     }
 
-    public function CurrCourses(){
+    public function CurrCourses()
+    {
         $user = Auth::user();
         $userrole = $user->userRole();
 
         //get courses
-       $courses = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
-       $todays_courses = collect(new Course);
-       $todays_sections = collect(new Section);
+        $courses = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
+        $todays_courses = collect(new Course);
+        $todays_sections = collect(new Section);
         $todays_slots = collect(new Timeslot);
 
-       foreach ($courses as $c){
-           $secs = Section::all()->where('course_id', $c->course_id)
-                                    ->where('section_code', $c->section_id);
-            if (! $secs->isEmpty()){
+        foreach ($courses as $c) {
+            $secs = Section::all()->where('course_id', $c->course_id)
+                ->where('section_code', $c->section_id);
+            if (!$secs->isEmpty()) {
                 $t = $secs->first()->timeslot_id;
-                
+
                 //get available time slots
                 $ts = Timeslot::all()->where('id', $t);
 
                 //if there is today
-                if (! $ts ->isEmpty()){
+                if (!$ts->isEmpty()) {
                     $todays_sections->push($secs->first());
                     $todays_courses->push((Course::all()->where('id', $c->course_id)->first()));
                     $todays_slots->push($ts->first());
                 }
             }
-            
-       }
-        return view('home', ['userrole' => $userrole, 'user' => $user, 'todays_sections'=>$todays_sections,
-                    'todays_courses'=>$todays_courses, 'todays_slots'=>$todays_slots]);
+        }
+        return view('student-home', [
+            'userrole' => $userrole, 'user' => $user, 'todays_sections' => $todays_sections,
+            'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots
+        ]);
     }
 
-    private function getCurrentCourses(){
+    private function getCurrentCourses()
+    {
         $user = Auth::user();
         $registered = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
         $courses = collect(new Course);
-        
-       foreach ($registered as $c){
+
+        foreach ($registered as $c) {
             $courses->push((Course::all()->where('id', $c->course_id)->first()));
         }
 
         return $courses;
     }
 
-    public function gpacalc(){
+    public function gpacalc()
+    {
         $user = Auth::user();
         $student = $user->userRole();
 
         $courses = $this->getCurrentCourses();
 
-        
+
         $newgpa = $student->gpa;
 
         return view('gpa-calculator', compact('user', 'student', 'courses', 'newgpa'));
     }
 
-    public function gpacalculate(){
+    public function gpacalculate()
+    {
         $user = Auth::user();
         $student = $user->userRole();
 
@@ -148,15 +160,14 @@ class HomeController extends Controller
 
         $courses = $this->getCurrentCourses();
         $data = request()->all();
-        foreach ($courses as $c){
+        foreach ($courses as $c) {
             $newpoints += ($data[$c->id]) * $c->credits;
             $newcredits += $c->credits;
         }
 
         $newgpa = ($student->grade_points + $newpoints) / ($student->total_credits + $newcredits);
 
-        
+
         return view('gpa-calculator', compact('user', 'student', 'courses', 'newgpa'));
     }
-    
 }
