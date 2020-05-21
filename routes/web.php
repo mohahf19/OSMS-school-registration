@@ -29,7 +29,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/courses', 'HomeController@courses')->name('courses')->middleware('auth');
 Route::get('/course-sections/{course_id}', 'HomeController@courseSections')->name('course-sections')->middleware('auth');
-
+Route::post('/register-course', 'HomeController@registerSection');
 
 Route::get('/profile', 'ProfileController@index')->middleware('auth');
 Route::post('/profile-update', 'ProfileController@profileUpdate')->middleware('auth');
@@ -49,3 +49,4 @@ Route::get('/payments', 'HomeController@payments')->middleware('auth');
 Route::get('/home/current-courses', 'HomeController@CurrCourses')->middleware('auth');
 Route::get('/home/gpacalc', 'HomeController@gpacalc')->middleware('auth');
 Route::post('/home/gpacalc', 'HomeController@gpacalculate')->middleware('auth');
+

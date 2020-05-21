@@ -64,7 +64,14 @@
                         <td class="text-center">0.0</td>
                      </tr>
                   @endforeach
-                  <button > Calculate! </button>
+                  <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-center"><button class="btn btn-success"> Calculate! </button></td>
+                  </tr>
                   </form>
                   </tbody>
                </table>
