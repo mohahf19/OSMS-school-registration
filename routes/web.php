@@ -44,6 +44,7 @@ Route::post('update-grades-submit', 'GradesController@addGradesSubmit')->middlew
 
 Route::get('view-attendance/{course_id}', 'AttendanceController@show')->middleware('auth');
 Route::get('view-grades/{course_id}', 'GradesController@show')->middleware('auth');
+Route::get('/view-tutors', 'TutorListController@index')->name('home')->middleware('auth');
 
 Route::get('/meals', 'HomeController@meals')->middleware('auth');
 Route::get('/activities', 'ActivitiesController@index')->middleware('auth');

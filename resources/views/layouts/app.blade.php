@@ -663,7 +663,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard-boxes.html">
+                        <a href="/view-tutors">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
                             View TA Information
                         </a>
