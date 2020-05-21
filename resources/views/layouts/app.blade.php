@@ -109,14 +109,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading">
-                                        {{$user->name}} {{$user->surname}}
+                                <a href="/profile" style="text-decoration:none">
+                                    <div class="widget-content-left  ml-3 header-user-info">
+                                        <div class="widget-heading">
+                                            {{$user->name}} {{$user->surname}}
+                                        </div>
+                                        <div class="widget-subheading">
+                                            {{$user->id}}
+                                        </div>
                                     </div>
-                                    <div class="widget-subheading">
-                                        {{$user->id}}
-                                    </div>
-                                </div>
+                                </a>
                                 <div class="widget-content-right header-user-info ml-3">
                                     <form action="/logout" method="POST">
                                         @csrf
@@ -445,7 +447,7 @@
                                     Home
                                 </a>
                             </li>
-                        
+
                             <li class="app-sidebar__heading">Academic</li>
                             <li>
                                 <a href="/home/current-courses">
@@ -508,7 +510,7 @@
                                 </a>
                             </li>
                             <li>
-                                     <a href="/meals">
+                                <a href="/meals">
                                     <i class="metismenu-icon pe-7s-angle-right">
                                     </i>Meals
                                 </a>
@@ -520,7 +522,7 @@
                                 </a>
                             </li>
 
-                            
+
 
                         </ul>
                     </div>
@@ -539,7 +541,7 @@
                         </li>
 
                         <li>
-                            <form action = "/logout" method = "POST">
+                            <form action="/logout" method="POST">
                                 @csrf
                                 <button type="submit" class="btn-shadow p-1 btn btn-primary btn-sm">
                                     <i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
@@ -562,7 +564,7 @@
                             </a>
 
                         </li>
-                         <li>
+                        <li>
                             <a href="#">
                                 <i class="metismenu-icon pe-7s-angle-right"></i>
                                 Grade
@@ -582,7 +584,7 @@
                                 <i class="metismenu-icon pe-7s-angle-right"></i>
                                 View Sections
                             </a>
-                        </li>   
+                        </li>
                         <li class="app-sidebar__heading">Others</li>
                         <li>
                             <a href="/dorms">
@@ -602,7 +604,7 @@
                                 </i>Payments
                             </a>
                         </li>
-                        
+
 
                     </ul>
                 </div>
@@ -622,7 +624,7 @@
                     </li>
 
                     <li>
-                        <form action = "/logout" method = "POST">
+                        <form action="/logout" method="POST">
                             @csrf
                             <button type="submit" class="btn-shadow p-1 btn btn-primary btn-sm">
                                 <i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
@@ -642,7 +644,7 @@
                     <li>
                         <a href="dashboard-boxes.html">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
-                            Attendance 
+                            Attendance
                         </a>
                     </li>
                     <li>
@@ -654,7 +656,7 @@
                     <li>
                         <a href="dashboard-boxes.html">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
-                            Assign TA 
+                            Assign TA
                         </a>
                     </li>
                     <li class="app-sidebar__heading">Information</li>
@@ -685,7 +687,7 @@
                         </a>
                     </li>
                     <li>
-                            <a href="/meals">
+                        <a href="/meals">
                             <i class="metismenu-icon pe-7s-angle-right">
                             </i>Meals
                         </a>
