@@ -31,15 +31,20 @@ Route::get('/courses', 'HomeController@courses')->name('courses')->middleware('a
 Route::get('/course-sections/{course_id}', 'HomeController@courseSections')->name('course-sections')->middleware('auth');
 
 
-Route::get('/profile', 'ProfileController@index');
-Route::post('/profile-update', 'ProfileController@profileUpdate');
+Route::get('/profile', 'ProfileController@index')->middleware('auth');
+Route::post('/profile-update', 'ProfileController@profileUpdate')->middleware('auth');
 
-Route::get('/meals', 'HomeController@meals');
-Route::get('/activities', 'ActivitiesController@index');
-// Route::get('/attendance', 'AttendanceController@index');
-Route::get('/exams', 'AssessmentsController@index');
-Route::get('/dorms', 'HomeController@dorms');
-Route::get('/payments', 'HomeController@payments');
-Route::get('/home/current-courses', 'HomeController@CurrCourses');
-Route::get('/home/gpacalc', 'HomeController@gpacalc');
-Route::post('/home/gpacalc', 'HomeController@gpacalculate');
+Route::get('add-attendance/{section_id}', 'AttendanceController@addAttendance')->middleware('auth');
+Route::get('add-grades/{section_id}', 'GradesController@addGrades')->middleware('auth');
+
+Route::get('view-attendance/{section_id}', 'AttendanceController@viewAttendance')->middleware('auth');
+Route::get('view-grades/{section_id}', 'GradesController@viewGrades')->middleware('auth');
+
+Route::get('/meals', 'HomeController@meals')->middleware('auth');
+Route::get('/activities', 'ActivitiesController@index')->middleware('auth');
+Route::get('/exams', 'AssessmentsController@index')->middleware('auth');
+Route::get('/dorms', 'HomeController@dorms')->middleware('auth');
+Route::get('/payments', 'HomeController@payments')->middleware('auth');
+Route::get('/home/current-courses', 'HomeController@CurrCourses')->middleware('auth');
+Route::get('/home/gpacalc', 'HomeController@gpacalc')->middleware('auth');
+Route::post('/home/gpacalc', 'HomeController@gpacalculate')->middleware('auth');

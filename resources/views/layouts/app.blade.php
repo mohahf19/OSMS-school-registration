@@ -546,14 +546,6 @@
                             </a>
                         </li>
 
-                        <li>
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button type="submit" class="btn-shadow p-1 btn btn-primary btn-sm">
-                                    <i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
-                                </button>
-                            </form>
-                        </li>
 
                         <li class="app-sidebar__heading">Academic</li>
                         <li>
@@ -629,14 +621,6 @@
                         </a>
                     </li>
 
-                    <li>
-                        <form action="/logout" method="POST">
-                            @csrf
-                            <button type="submit" class="btn-shadow p-1 btn btn-primary btn-sm">
-                                <i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
-                            </button>
-                        </form>
-                    </li>
 
 
                     <li class="app-sidebar__heading">Academic</li>
@@ -648,7 +632,7 @@
 
                     </li>
                     <li>
-                        <a href="dashboard-boxes.html">
+                        <a href="/add-attendance/1">
                             <i class="metismenu-icon pe-7s-angle-right"></i>
                             Attendance
                         </a>
