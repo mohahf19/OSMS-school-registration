@@ -16,42 +16,46 @@
 
                     Today's Lectures:
 
-
-            <div class="table-responsive">
-               <table class="align-middle mb-0 table table-borderless table-striped table-hover">
-                  <thead>
-                     <tr>
-                        <th class="text-center">Course Code</th>
-                        <th>Course Name</th>
-                        <th class="text-center">Credits</th>
-                        <th class="text-center">Operations</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <div class="scrollbar-container ps--active-y">
-                        @foreach( $courses as $course)
+            <?php if ($todays_sections->count() > 0) : ?>
+                <div class="table-responsive">
+                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                    <thead>
                         <tr>
-                           <td class="text-center text-muted">{{ $course->code}}</td>
-                           <td>
-                              <div class="widget-content p-0">
-                                 <div class="widget-content-wrapper">
-                                    <div class="widget-heading">{{ $course->title}}</div>
-                                 </div>
-                              </div>
-                           </td>
-                           <td class="text-center">
-                              <div class="badge badge-secondary">Bilkent: {{ $course->credits}}</div>
-                           </td>
-                           <td class="text-center">
-                              <a href="/course-sections/{{$course->id}}" id="PopoverCustomT-1" class="btn btn-primary btn-sm text-white">Select</a>
-                           </td>
-                        </tr>
-                        @endforeach
+                            <th class="text-center">Course Code</th>
+                            <th class="text-center">Section</th>
+                            <th class="text-center">From</th>
+                            <th class="text-center">To</th>
+                            <th class="text-center">Location</th>
 
-                     </div>
-                  </tbody>
-               </table>
-            </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <div class="scrollbar-container ps--active-y">
+                            <?php $length = $todays_sections->count(); ?>
+                            <?php for ($i = 0; $i < $length; $i++): ?>
+                                
+                                <tr>
+                                <td class="text-center text-muted">{{ $todays_courses[$i]->code}}</td>
+
+                                <td class="text-center text-muted">{{ $todays_sections[$i]->section_code}}</td>
+
+                                <td class="text-center text-muted">{{ $todays_slots[$i]->start_time}}</td>
+                              
+                                <td class="text-center text-muted">{{ $todays_slots[$i]->end_time}}</td>
+                              
+                                <td class="text-center text-muted">{{ $todays_sections[$i]->classroom}}</td>
+                           
+                                </tr>
+                                
+                            @endfor
+
+                        </div>
+                    </tbody>
+                </table>
+                </div>
+            <?php else : ?>
+                There are no courses today. Sleep well!
+            <?php endif;?>
 
 
                 </div>

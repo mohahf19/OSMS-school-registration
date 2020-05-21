@@ -71,5 +71,13 @@ class SectionsSeeder extends Seeder
             'section_code' => 2,
             'instructor_id' => 1
         ]);
+        DB::table('sections')->insert([
+            'course_id' => 5,
+            'classroom' => 'Forest',
+            'quota' => 60,
+            'timeslot_id' => 80,
+            'section_code' => 1,
+            'instructor_id' => 1
+        ]);
     }
 }

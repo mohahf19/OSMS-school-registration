@@ -13,7 +13,7 @@ class CreateRegisteredsTable extends Migration
      */
     public function up()
     {
-        Schema::create('registereds', function (Blueprint $table) {
+        Schema::create('registered', function (Blueprint $table) {
             $table->integer('st_id');
             $table->integer('course_id');
             $table->integer('section_id');
@@ -30,6 +30,6 @@ class CreateRegisteredsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registereds');
+        Schema::dropIfExists('registered');
     }
 }
