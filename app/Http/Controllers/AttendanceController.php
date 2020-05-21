@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Attendance;
+use App\Course;
+use App\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,8 +24,17 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $userrole = $user->userRole();
 
+        $s = Section::where('id', $section_id)->first();
+        $c = Course::where('id', $s->course_id)->first();
+        $s->course = $c;
+
+
         return view('add-attendance', [
             'userrole' => $userrole, 'user' => $user
         ]);
+    }
+
+    public function viewAttendance( $section_id){
+        
     }
 }
