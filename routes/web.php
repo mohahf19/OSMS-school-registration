@@ -31,6 +31,9 @@ Route::get('/courses', 'HomeController@courses')->name('courses')->middleware('a
 Route::get('/course-sections/{course_id}', 'HomeController@courseSections')->name('course-sections')->middleware('auth');
 
 
+Route::get('/profile', 'ProfileController@index');
+Route::post('/profile-update', 'ProfileController@profileUpdate');
+
 Route::get('/meals', 'HomeController@meals');
 Route::get('/activities', 'ActivitiesController@index');
 Route::get('/dorms', 'HomeController@dorms');
