@@ -30,3 +30,5 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/courses', 'HomeController@courses')->name('courses')->middleware('auth');
 Route::get('/course-sections/{course_id}', 'HomeController@courseSections')->name('course-sections')->middleware('auth');
 
+
+Route::get('/meals', 'HomeController@meals');

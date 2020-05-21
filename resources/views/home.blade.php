@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Today's Lectures:
+
+                    
                 </div>
             </div>
         </div>

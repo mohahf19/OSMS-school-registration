@@ -40,4 +40,8 @@ class HomeController extends Controller
         }
     }
     
+    public function meals(){
+        $user = Auth::user();
+        return view ('meals-page', compact('user'));
+    }
 }

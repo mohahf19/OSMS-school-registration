@@ -445,6 +445,16 @@
                                     Home
                                 </a>
                             </li>
+
+                            <li>
+                                <form action = "/logout" method = "POST">
+                                    @csrf
+                                    <button type="submit" class="btn-shadow p-1 btn btn-primary btn-sm">
+                                        <i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
+                                    </button>
+                                </form>
+                            </li>
+                        
                             <li class="app-sidebar__heading">Academic</li>
                             <li>
                                 <a href="#">
@@ -507,7 +517,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="charts-chartjs.html">
+                                     <a href="/meals">
                                     <i class="metismenu-icon pe-7s-angle-right">
                                     </i>Meals
                                 </a>
@@ -518,6 +528,8 @@
                                     </i>Payments
                                 </a>
                             </li>
+
+                            
 
                         </ul>
                     </div>
@@ -534,6 +546,16 @@
                                 Home
                             </a>
                         </li>
+
+                        <li>
+                            <form action = "/logout" method = "POST">
+                                @csrf
+                                <button type="submit" class="btn-shadow p-1 btn btn-primary btn-sm">
+                                    <i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
+                                </button>
+                            </form>
+                        </li>
+
                         <li class="app-sidebar__heading">Academic</li>
                         <li>
                             <a href="#">
@@ -578,7 +600,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="charts-chartjs.html">
+                            <a href="/meals">
                                 <i class="metismenu-icon pe-7s-angle-right">
                                 </i>Meals
                             </a>
@@ -589,6 +611,7 @@
                                 </i>Payments
                             </a>
                         </li>
+                        
 
                     </ul>
                 </div>
@@ -606,6 +629,17 @@
                             Home
                         </a>
                     </li>
+
+                    <li>
+                        <form action = "/logout" method = "POST">
+                            @csrf
+                            <button type="submit" class="btn-shadow p-1 btn btn-primary btn-sm">
+                                <i class="fa text-white fa-sign-out-alt pr-1 pl-1"></i>
+                            </button>
+                        </form>
+                    </li>
+
+
                     <li class="app-sidebar__heading">Academic</li>
                     <li>
                         <a href="#">
@@ -660,7 +694,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="charts-chartjs.html">
+                            <a href="/meals">
                             <i class="metismenu-icon pe-7s-angle-right">
                             </i>Meals
                         </a>
