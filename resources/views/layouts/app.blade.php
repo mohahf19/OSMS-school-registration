@@ -483,6 +483,12 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="/attendance">
+                                    <i class="metismenu-icon pe-7s-angle-right"></i>
+                                    Attendance
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/activities">
                                     <i class="metismenu-icon pe-7s-angle-right"></i>
                                     Activities
