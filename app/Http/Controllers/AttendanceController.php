@@ -35,6 +35,14 @@ class AttendanceController extends Controller
     }
 
     public function viewAttendance( $section_id){
-        
+        $user = Auth::user();
+        $userrole = $user->userRole();
+        $attendances = Attendance::where('section_id', $section_id)->where('student_id', $user->id)->get();
+
+
+
+        return view('course-attendance', [
+            'userrole' => $userrole, 'user' => $user, 'attendances' => $attendances
+        ]);
     }
 }
