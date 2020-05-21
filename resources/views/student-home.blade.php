@@ -44,9 +44,9 @@
 
                                                 <td class="text-center text-muted">{{ $days[$todays_slots[$i]->day]}}</td>
 
-                                                <td class="text-center text-muted">{{ $todays_slots[$i]->start_time}}</td>
+                                                <td class="text-center text-muted">{{ $todays_slots[$i]->time}} :40</td>
 
-                                                <td class="text-center text-muted">{{ $todays_slots[$i]->end_time}}</td>
+                                                <td class="text-center text-muted">{{ $todays_slots[$i]->time + 1}} :40</td>
 
                                                 <td class="text-center text-muted">{{ $todays_sections[$i]->classroom}}</td>
 
