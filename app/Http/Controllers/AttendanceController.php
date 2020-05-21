@@ -32,7 +32,7 @@ class AttendanceController extends Controller
 
         $s = Section::where('id', $section_id)->first();
         $c = Course::where('id', $s->course_id)->first();
-        $r = Registered::where('section_id', $section_id)->get();
+        $r = Registered::where('section_id', $s->section_code)->where('course_id', $c->id)->get();
         $students = [];
         foreach( $r as $rtemp){
             $user = User::where('id', $rtemp->st_id)->first();
@@ -45,6 +45,11 @@ class AttendanceController extends Controller
             'userrole' => $userrole, 'user' => $user, 'students' => $students, 'section' => $s
         ]);
     }
+
+    public function viewAttendance( $section_id){
+        $user = Auth::user();
+        $userrole = $user->userRole();
+        $attendances = Attendance::where('section_id', $section_id)->where('student_id', $user->id)->get();
 
     public function show( $c_id){
         $user = Auth::user();
@@ -67,5 +72,9 @@ class AttendanceController extends Controller
         
         return view('course-attendance', compact('userrole', 'user','data', 'courseinfo'));
 
+
+        return view('course-attendance', [
+            'userrole' => $userrole, 'user' => $user, 'attendances' => $attendances
+        ]);
     }
 }

@@ -89,7 +89,7 @@ class HomeController extends Controller
                 $c = Course::where('id', $s->course_id)->first();
                 $timeSlot = Timeslot::where('id', $s->timeslot_id)->first();
                 $s->day = $days[ $timeSlot->day - 1];
-                $s->time = $timeSlot->time < 10 ? ("0" . $timeSlot->time . ":00") : ($timeSlot->time . ":00");
+                $s->time = $timeSlot->time < 10 ? ("0" . $timeSlot->time . ":40") : ($timeSlot->time . ":40");
                 $t->course = $c;
                 $t->section = $s;
             }
