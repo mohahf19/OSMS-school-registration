@@ -18,6 +18,10 @@ class AssessmentsController extends Controller
         $userrole = $user->userRole();
 
         $assessments = Assessment::all();
+        foreach( $assessments as $a){
+            $course = Course::where('id', $a->course_id)->first();
+            $a->course = $course;
+        }
 
         return view('scheduled-exams', [
             'userrole' => $userrole, 'user' => $user, 'assessments' => $assessments

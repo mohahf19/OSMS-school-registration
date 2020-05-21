@@ -32,7 +32,7 @@
                          @foreach ($assessments as $assessments)
                             <tr>
                                 <td class="text-center text-muted">{{ $assessments->date}}</td>    
-                                <td class="text-center">{{ $assessments->course_id}}</td>
+                                <td class="text-center">{{ $assessments->course->code}}</td>
                                 <td class="text-center text-muted">{{ $assessments->name}}</td>
                                 <td class="text-center">
                                     <div class="badge badge-secondary">{{ $assessments->type}}</div>
