@@ -14,7 +14,7 @@ class AssessmentsSeeder extends Seeder
     public function run()
     {
         DB::table('assessments')->insert([
-            'course_id' => '1',
+            'course_id' => '342',
             'type' => 'Midterm',
             'name' => 'Midterm 1',
             'date' => Carbon::parse('2020-01-01'),
@@ -26,7 +26,7 @@ class AssessmentsSeeder extends Seeder
         ]);
 
         DB::table('assessments')->insert([
-            'course_id' => '5',
+            'course_id' => '353',
             'type' => 'Midterm',
             'name' => 'Midterm 2',
             'date' => Carbon::parse('2020-01-01'),
@@ -38,7 +38,7 @@ class AssessmentsSeeder extends Seeder
         ]);
 
         DB::table('assessments')->insert([
-            'course_id' => '3',
+            'course_id' => '101',
             'type' => 'Final',
             'name' => 'Final',
             'date' => Carbon::parse('2020-01-01'),

@@ -36,6 +36,7 @@ Route::post('/profile-update', 'ProfileController@profileUpdate');
 
 Route::get('/meals', 'HomeController@meals');
 Route::get('/activities', 'ActivitiesController@index');
+Route::get('/exams', 'AssessmentsController@index');
 Route::get('/dorms', 'HomeController@dorms');
 Route::get('/payments', 'HomeController@payments');
 Route::get('/home/current-courses', 'HomeController@CurrCourses');
