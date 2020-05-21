@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredSeeder extends Seeder
 {
@@ -18,7 +19,8 @@ class RegisteredSeeder extends Seeder
             'section_id' => 2,
             'semester' => "Spring",
             'year' => 2020,
-            'letter_grade' => NULL ]);
+            'letter_grade' => NULL
+        ]);
 
         DB::table('registered')->insert([
             'st_id' => 22001000,
@@ -26,14 +28,42 @@ class RegisteredSeeder extends Seeder
             'section_id' => 1,
             'semester' => "Spring",
             'year' => 2017,
-            'letter_grade' => 'A+' ]);
+            'letter_grade' => 'A+'
+        ]);
 
-            DB::table('registered')->insert([
-                'st_id' => 22001000,
-                'course_id' => 5,
-                'section_id' => 1,
-                'semester' => "Spring",
-                'year' => 2020,
-                'letter_grade' => NULL ]);
+        DB::table('registered')->insert([
+            'st_id' => 22001000,
+            'course_id' => 5,
+            'section_id' => 3,
+            'semester' => "Spring",
+            'year' => 2020,
+            'letter_grade' => NULL
+        ]);
+        DB::table('registered')->insert([
+            'st_id' => 22001003,
+            'course_id' => 1,
+            'section_id' => 2,
+            'semester' => "Spring",
+            'year' => 2020,
+            'letter_grade' => NULL
+        ]);
+
+        DB::table('registered')->insert([
+            'st_id' => 22001003,
+            'course_id' => 7,
+            'section_id' => 1,
+            'semester' => "Spring",
+            'year' => 2017,
+            'letter_grade' => 'A+'
+        ]);
+
+        DB::table('registered')->insert([
+            'st_id' => 22001003,
+            'course_id' => 5,
+            'section_id' => 3,
+            'semester' => "Spring",
+            'year' => 2020,
+            'letter_grade' => NULL
+        ]);
     }
 }
