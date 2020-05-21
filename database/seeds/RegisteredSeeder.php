@@ -34,7 +34,7 @@ class RegisteredSeeder extends Seeder
         DB::table('registered')->insert([
             'st_id' => 22001000,
             'course_id' => 5,
-            'section_id' => 3,
+            'section_id' => 1,
             'semester' => "Spring",
             'year' => 2020,
             'letter_grade' => NULL

@@ -32,6 +32,7 @@ class HomeController extends Controller
             foreach ($courses as $c) {
                 $secs = Section::all()->where('course_id', $c->course_id)
                     ->where('section_code', $c->section_id);
+                
                 if (!$secs->isEmpty()) {
                     $t = $secs->first()->timeslot_id;
 
@@ -86,7 +87,7 @@ class HomeController extends Controller
                 $c = Course::where('id', $s->course_id)->first();
                 $timeSlot = Timeslot::where('id', $s->timeslot_id)->first();
                 $s->day = $days[ $timeSlot->day - 1];
-                $s->time = $timeSlot->time < 10 ? ("0" . $timeSlot->time . ":00") : ($timeSlot->time . ":00");
+                $s->time = $timeSlot->time < 10 ? ("0" . $timeSlot->time . ":40") : ($timeSlot->time . ":40");
                 $t->course = $c;
                 $t->section = $s;
             }

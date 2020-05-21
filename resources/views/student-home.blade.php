@@ -51,8 +51,8 @@
                                                 <td class="text-center text-muted">{{ $todays_sections[$i]->classroom}}</td>
 
                                                 <td class="text-center">
-                                                    <a href="/view-attendance/{{$todays_sections[$i]->id}}" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Attendance</a>
-                                                    <a href="/view-grades/{{$todays_sections[$i]->id}}" id="PopoverCustomT-1" class="btn btn-warning btn-sm">Grades</a>
+                                                    <a href="/view-attendance/{{$todays_courses[$i]->id}}" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Attendance</a>
+                                                    <a href="/view-grades/{{$todays_courses[$i]->id}}" id="PopoverCustomT-1" class="btn btn-warning btn-sm">Grades</a>
                                                 </td>
 
                                             </tr>
