@@ -6,21 +6,21 @@ use App\Course;
 use App\Section;
 use App\Registered;
 use App\Timeslot;
-use App\Activity;
+use App\Assessment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ActivitiesController extends Controller
+class AssessmentsController extends Controller
 {
     public function index()
     {
         $user = Auth::user();
         $userrole = $user->userRole();
 
-        $activities = Activity::all();
+        $assessments = Assessment::all();
 
-        return view('activity-calendar', [
-            'userrole' => $userrole, 'user' => $user, 'activities' => $activities
+        return view('scheduled-exams', [
+            'userrole' => $userrole, 'user' => $user, 'assessments' => $assessments
         ]);
     }
 }

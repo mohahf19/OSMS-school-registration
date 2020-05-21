@@ -469,7 +469,7 @@
 
                             <li class="app-sidebar__heading">Information</li>
                             <li>
-                                <a href="dashboard-boxes.html">
+                                <a href="/exams">
                                     <i class="metismenu-icon pe-7s-angle-right"></i>
                                     Scheduled Exams
                                 </a>

@@ -18,68 +18,34 @@
                         <thead>
                             <tr>
                                 <th class="text-center">Date</th>
-                                <th class="text-center">Course</th>
-                                <th>Exam name</th>
-                                <th class="text-center">Exam type</th>
-                                <th class="text-center">Credits</th>
-                                <th class="text-center">Details</th>
+                                <th class="text-center">Coures ID</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Type</th>
+                                <th class="text-center">Percentage</th>
+                                <th class="text-center">Location</th>
+                                <th class="text-center">Start Time</th>
+                                <th class="text-center">End Time</th>
+                                <th class="text-center">Max Grade</th>  
                             </tr>
                         </thead>
                         <tbody>
+                         @foreach ($assessments as $assessments)
                             <tr>
-                                <td class="text-center text-muted">27/03/2020</td>
-                                <td class="text-center text-muted">CS353: Database Systems</td>
-                                <td class="text-center text-muted">Midterm 1</td>
+                                <td class="text-center text-muted">{{ $assessments->date}}</td>    
+                                <td class="text-center">{{ $assessments->course_id}}</td>
+                                <td class="text-center text-muted">{{ $assessments->name}}</td>
                                 <td class="text-center">
-                                    <div class="badge badge-secondary">Midterm</div>
-                                </td>
+                                    <div class="badge badge-secondary">{{ $assessments->type}}</div>
+                                </td>                               
                                 <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">35%</button>
+                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">{{ $assessments->percentage}}%</button>
                                 </td>
-                                <td class="text-center">Room EE-03</td>
+                                <td class="text-center">{{ $assessments->location}}</td>
+                                <td class="text-center">{{ $assessments->start_time}}</td>
+                                <td class="text-center">{{ $assessments->end_time}}</td>
+                                <td class="text-center">{{ $assessments->max_grade}}</td>
                             </tr>
-
-                            <tr>
-                                <td class="text-center text-muted">01/05/2020</td>
-                                <td class="text-center text-muted">CS353: Database Systems</td>
-                                <td class="text-center text-muted">Midterm 2</td>
-                                <td class="text-center">
-                                    <div class="badge badge-secondary">Midterm</div>
-                                </td>
-                                <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">20%</button>
-                                </td>
-                                <td class="text-center">Room EE-04</td>
-                            </tr>
-
-                            <tr>
-                                <td class="text-center text-muted">15/05/2020</td>
-                                <td class="text-center text-muted">EEE391: Basics of Signals and Systems</td>
-                                <td class="text-center text-muted">Presentation 1</td>
-                                <td class="text-center">
-                                    <div class="badge badge-secondary">Presentation</div>
-                                </td>
-                                <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">15%</button>
-                                </td>
-                                <td class="text-center">Room B-Z04</td>
-                            </tr>
-
-                            <tr>
-                                <td class="text-center text-muted">27/05/2020</td>
-                                <td class="text-center text-muted">CS353: Database Systems</td>
-                                <td class="text-center text-muted">Final Exam</td>
-                                <td class="text-center">
-                                    <div class="badge badge-secondary">Final Exam</div>
-                                </td>
-                                <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">40%</button>
-                                </td>
-                                <td class="text-center">Room FF-01</td>
-                            </tr>
-
-
-
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -33,6 +33,7 @@ Route::get('/course-sections/{course_id}', 'HomeController@courseSections')->nam
 
 Route::get('/meals', 'HomeController@meals');
 Route::get('/activities', 'ActivitiesController@index');
+Route::get('/exams', 'AssessmentsController@index');
 Route::get('/dorms', 'HomeController@dorms');
 Route::get('/payments', 'HomeController@payments');
 Route::get('/home/current-courses', 'HomeController@CurrCourses');
