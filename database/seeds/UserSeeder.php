@@ -50,7 +50,8 @@ class UserSeeder extends Seeder
         
         DB::table('students')->insert([
             'user_id' => $user1->id,
-            'gpa' => 3.45
+            'grade_points' => 130.8,
+            'total_credits' => 40,
         ]);
         DB::table('tas')->insert([
             'user_id' => $user2->id,

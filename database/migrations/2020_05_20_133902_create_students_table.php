@@ -17,7 +17,8 @@ class CreateStudentsTable extends Migration
             $table->id();
 
             $table->bigInteger('user_id');
-            $table->float('gpa');
+            $table->float('grade_points');
+            $table->integer('total_credits');
 
             $table->timestamps();
         });

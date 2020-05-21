@@ -51,7 +51,7 @@
                            
                                 </tr>
                                 
-                            @endfor
+                            <?php endfor;?>
 
                         </div>
                     </tbody>

@@ -114,4 +114,49 @@ class HomeController extends Controller
         return view('home', ['userrole' => $userrole, 'user' => $user, 'todays_sections'=>$todays_sections,
                     'todays_courses'=>$todays_courses, 'todays_slots'=>$todays_slots]);
     }
+
+    private function getCurrentCourses(){
+        $user = Auth::user();
+        $registered = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
+        $courses = collect(new Course);
+        
+       foreach ($registered as $c){
+            $courses->push((Course::all()->where('id', $c->course_id)->first()));
+        }
+
+        return $courses;
+    }
+
+    public function gpacalc(){
+        $user = Auth::user();
+        $student = $user->userRole();
+
+        $courses = $this->getCurrentCourses();
+
+        
+        $newgpa = $student->gpa;
+
+        return view('gpa-calculator', compact('user', 'student', 'courses', 'newgpa'));
+    }
+
+    public function gpacalculate(){
+        $user = Auth::user();
+        $student = $user->userRole();
+
+        $newpoints = 0;
+        $newcredits = 0;
+
+        $courses = $this->getCurrentCourses();
+        $data = request()->all();
+        foreach ($courses as $c){
+            $newpoints += ($data[$c->id]) * $c->credits;
+            $newcredits += $c->credits;
+        }
+
+        $newgpa = ($student->grade_points + $newpoints) / ($student->total_credits + $newcredits);
+
+        
+        return view('gpa-calculator', compact('user', 'student', 'courses', 'newgpa'));
+    }
+    
 }

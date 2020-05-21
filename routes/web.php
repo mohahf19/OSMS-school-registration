@@ -35,3 +35,5 @@ Route::get('/meals', 'HomeController@meals');
 Route::get('/dorms', 'HomeController@dorms');
 Route::get('/payments', 'HomeController@payments');
 Route::get('/home/current-courses', 'HomeController@CurrCourses');
+Route::get('/home/gpacalc', 'HomeController@gpacalc');
+Route::post('/home/gpacalc', 'HomeController@gpacalculate');
