@@ -440,7 +440,7 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboards</li>
                             <li>
-                                <a href="index.html" class="mm-active">
+                                <a href="/home" class="mm-active">
                                     <i class="metismenu-icon pe-7s-home"></i>
                                     Home
                                 </a>
@@ -457,12 +457,12 @@
                         
                             <li class="app-sidebar__heading">Academic</li>
                             <li>
-                                <a href="#">
+                                <a href="/home/current-courses">
                                     <i class="metismenu-icon pe-7s-angle-right"></i>
                                     Current Courses
                                 </a>
                             <li>
-                                <a href="#">
+                                <a href="/courses">
                                     <i class="metismenu-icon pe-7s-angle-right"></i>
                                     Course Registration
                                 </a>
@@ -541,7 +541,7 @@
                     <ul class="vertical-nav-menu">
                         <li class="app-sidebar__heading">Dashboards</li>
                         <li>
-                            <a href="index.html" class="mm-active">
+                            <a href="/home" class="mm-active">
                                 <i class="metismenu-icon pe-7s-home"></i>
                                 Home
                             </a>
@@ -624,7 +624,7 @@
                 <ul class="vertical-nav-menu">
                     <li class="app-sidebar__heading">Dashboards</li>
                     <li>
-                        <a href="index.html" class="mm-active">
+                        <a href="/home" class="mm-active">
                             <i class="metismenu-icon pe-7s-home"></i>
                             Home
                         </a>

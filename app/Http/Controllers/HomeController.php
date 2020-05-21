@@ -82,4 +82,36 @@ class HomeController extends Controller
         $user = Auth::user();
         return view ('payments', compact('user'));
     }
+
+    public function CurrCourses(){
+        $user = Auth::user();
+        $userrole = $user->userRole();
+
+        //get courses
+       $courses = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
+       $todays_courses = collect(new Course);
+       $todays_sections = collect(new Section);
+        $todays_slots = collect(new Timeslot);
+
+       foreach ($courses as $c){
+           $secs = Section::all()->where('course_id', $c->course_id)
+                                    ->where('section_code', $c->section_id);
+            if (! $secs->isEmpty()){
+                $t = $secs->first()->timeslot_id;
+                
+                //get available time slots
+                $ts = Timeslot::all()->where('id', $t);
+
+                //if there is today
+                if (! $ts ->isEmpty()){
+                    $todays_sections->push($secs->first());
+                    $todays_courses->push((Course::all()->where('id', $c->course_id)->first()));
+                    $todays_slots->push($ts->first());
+                }
+            }
+            
+       }
+        return view('home', ['userrole' => $userrole, 'user' => $user, 'todays_sections'=>$todays_sections,
+                    'todays_courses'=>$todays_courses, 'todays_slots'=>$todays_slots]);
+    }
 }
