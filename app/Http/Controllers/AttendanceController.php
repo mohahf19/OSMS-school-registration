@@ -64,6 +64,7 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $userrole = $user->userRole();
         $attendances = Attendance::where('section_id', $section_id)->where('student_id', $user->id)->get();
+    }
 
     public function show( $c_id){
         $user = Auth::user();
@@ -84,11 +85,11 @@ class AttendanceController extends Controller
             ->get();
         $courseinfo = Course::where('id', $c_id)->select('title', 'code')->first();
         
-        return view('course-attendance', compact('userrole', 'user','data', 'courseinfo'));
+        // return view('course-attendance', compact('userrole', 'user','data', 'courseinfo'));
 
 
         return view('course-attendance', [
-            'userrole' => $userrole, 'user' => $user, 'attendances' => $attendances
+            'userrole' => $userrole, 'user' => $user, 'attendances' => $data, 'courseinfo' => $courseinfo
         ]);
     }
 }

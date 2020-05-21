@@ -26,10 +26,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($attendances as $attendances)
+                        @foreach ($attendances as $a)
                         <tr>
-                            <td class="text-muted">{{ $assessments->week_no}}1</td>
-                            <td class="text-muted">{{ $assessments->attendance_count}}</td>
+                            <td class="text-center text-muted">{{ $a->week_no}}</td>
+                            <td class="text-center text-muted">{{ $a->attendance_count}} / {{ $a->total_count}}</td>
                         </tr>
                         @endforeach
                         </tbody>
