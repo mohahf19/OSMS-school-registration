@@ -20,7 +20,7 @@ class GradesController extends Controller
         $userrole = $user->userRole();
 
         $registered = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
-        $courses = collect(new Course);
+            $courses = collect(new Course);
 
         foreach ($registered as $c) {
             $courses->push((Course::all()->where('id', $c->course_id)->first()));

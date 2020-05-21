@@ -10,7 +10,9 @@ use App\Section;
 use App\Student;
 use App\User;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
@@ -44,7 +46,26 @@ class AttendanceController extends Controller
         ]);
     }
 
-    public function viewAttendance( $section_id){
+    public function show( $c_id){
+        $user = Auth::user();
+        $userrole = $user->userRole();
+
+        $registered = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
+        $courses = collect(new Course);
+
+        foreach ($registered as $c) {
+            $courses->push((Course::all()->where('id', $c->course_id)->first()));
+        }
+    
+        $data = DB::table('attendances')
+            ->where('course_id', $c_id)
+            ->where('student_id', $user->id)
+            ->select('week_no', 'attendance_count', 'total_count', 'comment')
+            ->orderBy('week_no', 'ASC')
+            ->get();
+        $courseinfo = Course::where('id', $c_id)->select('title', 'code')->first();
+        
+        return view('course-attendance', compact('userrole', 'user','data', 'courseinfo'));
 
     }
 }

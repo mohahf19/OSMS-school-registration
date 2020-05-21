@@ -23,6 +23,7 @@ class CreateAttendancesTable extends Migration
             $table->integer("week_no");
             $table->integer("attendance_count");
             $table->integer("total_count");
+            $table->string('comment')->nullable();
 
             $table->timestamps();
         });
