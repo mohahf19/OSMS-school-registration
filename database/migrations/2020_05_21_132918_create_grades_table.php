@@ -15,7 +15,10 @@ class CreateGradesTable extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('student_id');
+            $table->foreignId('assessment_id');
+            $table->float('grade');
+            $table->string('comment')->nullable();
         });
     }
 

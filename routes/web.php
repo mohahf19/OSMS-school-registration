@@ -37,8 +37,8 @@ Route::post('/profile-update', 'ProfileController@profileUpdate')->middleware('a
 Route::get('add-attendance/{section_id}', 'AttendanceController@addAttendance')->middleware('auth');
 Route::get('add-grades/{section_id}', 'GradesController@addGrades')->middleware('auth');
 
-Route::get('view-attendance/{section_id}', 'AttendanceController@viewAttendance')->middleware('auth');
-Route::get('view-grades/{section_id}', 'GradesController@viewGrades')->middleware('auth');
+Route::get('view-attendance/{course_id}', 'AttendanceController@show')->middleware('auth');
+Route::get('view-grades/{course_id}', 'GradesController@show')->middleware('auth');
 
 Route::get('/meals', 'HomeController@meals')->middleware('auth');
 Route::get('/activities', 'ActivitiesController@index')->middleware('auth');
