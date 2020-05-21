@@ -33,12 +33,25 @@
                         <tbody>
                             @foreach( $students as $s)
                             <tr>
-                                <form>
-                                <td class="text-muted">{{ $s->id}}</td>
-                                <td class="text-muted">{{ $s->name}} {{ $s->surname}}</td>
-                                <td class="">
-                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Update</button>
-                                </td>
+                                <form action="/update-attendance/{{ $s->id}}/{{$section->id}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="section" value="{{$section->id}}"/>
+                                    <input type="hidden" name="student" value="{{ $s->id}}"/>
+                                    <td class="text-muted">{{ $s->id}}</td>
+                                    <td class="text-muted">{{ $s->name}} {{ $s->surname}}</td>
+                                    <td class="text-muted">
+                                        <input type="number" name="week" />
+                                    </td>
+                                    <td class="text-muted">
+                                        <input type="number" name="current" />
+                                    </td>
+                                    <td class="text-muted">
+                                        <input type="number" name="total" />
+                                    </td>
+                                    <td class="">
+                                        <button type="submit" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Update</button>
+                                    </td>
+                                </form>
                             </tr>
                             @endforeach
                         </tbody>

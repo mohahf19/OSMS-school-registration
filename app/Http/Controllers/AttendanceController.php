@@ -30,7 +30,7 @@ class AttendanceController extends Controller
 
         $s = Section::where('id', $section_id)->first();
         $c = Course::where('id', $s->course_id)->first();
-        $r = Registered::where('section_id', $section_id)->get();
+        $r = Registered::where('section_id', $s->section_code)->where('course_id', $c->id)->get();
         $students = [];
         foreach( $r as $rtemp){
             $user = User::where('id', $rtemp->st_id)->first();
