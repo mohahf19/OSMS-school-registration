@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Section;
 use App\Registered;
+use App\Teaches;
 use App\Timeslot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +51,47 @@ class HomeController extends Controller
                 'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots
             ]);
         } else if ($user->login_type == 2) {
+            $courses = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
+            $todays_courses = collect(new Course);
+            $todays_sections = collect(new Section);
+            $todays_slots = collect(new Timeslot);
+
+            foreach ($courses as $c) {
+                $secs = Section::all()->where('course_id', $c->course_id)
+                    ->where('section_code', $c->section_id);
+                if (!$secs->isEmpty()) {
+                    $t = $secs->first()->timeslot_id;
+
+                    //get available time slots
+                    $ts = Timeslot::all()->where('id', $t);
+
+                    //if there is today
+                    if (!$ts->isEmpty()) {
+                        $todays_sections->push($secs->first());
+                        $todays_courses->push((Course::all()->where('id', $c->course_id)->first()));
+                        $todays_slots->push($ts->first());
+                    }
+                }
+            }
+            return view('student-home', [
+                'userrole' => $userrole, 'user' => $user, 'todays_sections' => $todays_sections,
+                'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots
+            ]);
         } else {
+            $days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SAT"];
+            $teaches = Teaches::where('instructor_id', $userrole->id)->get();
+            foreach( $teaches as $t){
+                $s = Section::where('id', $t->section_id)->first();
+                $c = Course::where('id', $s->course_id)->first();
+                $timeSlot = Timeslot::where('id', $s->timeslot_id)->first();
+                $s->day = $days[ $timeSlot->day - 1];
+                $s->time = $timeSlot->time < 10 ? ("0" . $timeSlot->time . ":00") : ($timeSlot->time . ":00");
+                $t->course = $c;
+                $t->section = $s;
+            }
+            return view('instructor-home', [
+                'userrole' => $userrole, 'user' => $user, 'teaches' => $teaches,
+            ]);
         }
     }
 

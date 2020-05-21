@@ -17,4 +17,13 @@ class AttendanceController extends Controller
             'userrole' => $userrole, 'user' => $user, 'attendance' => $attendances
         ]);
     }
+
+    public function addAttendance( $section_id){
+        $user = Auth::user();
+        $userrole = $user->userRole();
+
+        return view('add-attendance', [
+            'userrole' => $userrole, 'user' => $user
+        ]);
+    }
 }
