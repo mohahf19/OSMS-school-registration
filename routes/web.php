@@ -32,3 +32,5 @@ Route::get('/course-sections/{course_id}', 'HomeController@courseSections')->nam
 
 
 Route::get('/meals', 'HomeController@meals');
+Route::get('/dorms', 'HomeController@dorms');
+Route::get('/payments', 'HomeController@payments');

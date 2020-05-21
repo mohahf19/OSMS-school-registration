@@ -18,7 +18,11 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $userrole = $user->userRole();
-        return view('home', ['userrole' => $userrole, 'user' => $user]);
+
+        //get courses
+
+        $courses = Course::all()->where()
+        return view('home', ['userrole' => $userrole, 'user' => $user, 'courses' => $courses]);
     }
 
     public function courses()
@@ -43,5 +47,15 @@ class HomeController extends Controller
     public function meals(){
         $user = Auth::user();
         return view ('meals-page', compact('user'));
+    }
+
+    public function dorms(){
+        $user = Auth::user();
+        return view ('dormitories-page', compact('user'));
+    }
+
+    public function payments(){
+        $user = Auth::user();
+        return view ('payments', compact('user'));
     }
 }

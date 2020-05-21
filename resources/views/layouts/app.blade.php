@@ -511,7 +511,7 @@
 
                             <li class="app-sidebar__heading">Others</li>
                             <li>
-                                <a href="charts-chartjs.html">
+                                <a href="/dorms">
                                     <i class="metismenu-icon pe-7s-angle-right">
                                     </i>Dormitory
                                 </a>
@@ -523,7 +523,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="charts-chartjs.html">
+                                <a href="/payments">
                                     <i class="metismenu-icon pe-7s-angle-right">
                                     </i>Payments
                                 </a>
@@ -594,7 +594,7 @@
                         </li>   
                         <li class="app-sidebar__heading">Others</li>
                         <li>
-                            <a href="charts-chartjs.html">
+                            <a href="/dorms">
                                 <i class="metismenu-icon pe-7s-angle-right">
                                 </i>Dormitory
                             </a>
@@ -606,7 +606,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="charts-chartjs.html">
+                            <a href="/payments">
                                 <i class="metismenu-icon pe-7s-angle-right">
                                 </i>Payments
                             </a>
@@ -688,7 +688,7 @@
 
                     <li class="app-sidebar__heading">Others</li>
                     <li>
-                        <a href="charts-chartjs.html">
+                        <a href="/dorms">
                             <i class="metismenu-icon pe-7s-angle-right">
                             </i>Dormitory
                         </a>
@@ -700,7 +700,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="charts-chartjs.html">
+                        <a href="/payments">
                             <i class="metismenu-icon pe-7s-angle-right">
                             </i>Payments
                         </a>
