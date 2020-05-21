@@ -33,7 +33,7 @@
                         <tbody>
                             @foreach( $students as $s)
                             <tr>
-                                <form action="/update-attendance/{{ $s->id}}/{{$section->id}}" method="post">
+                                <form action="/update-attendance" method="post">
                                     @csrf
                                     <input type="hidden" name="section" value="{{$section->id}}"/>
                                     <input type="hidden" name="student" value="{{ $s->id}}"/>

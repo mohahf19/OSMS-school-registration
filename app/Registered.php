@@ -8,4 +8,5 @@ class Registered extends Model
 {
     //
     protected $table = 'registered';
+    
 }

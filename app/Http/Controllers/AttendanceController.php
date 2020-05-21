@@ -25,6 +25,20 @@ class AttendanceController extends Controller
             'userrole' => $userrole, 'user' => $user, 'attendance' => $attendances
         ]);
     }
+    public function addAttendanceSubmit( Request $request){
+        $section = Section::where('id', $request->section)->first();
+        $attendance = Attendance::create([
+            'student_id' => $request->student,
+            'course_id' => $section->course_id,
+            'section_id' => $request->section,
+            'semester_id' => 1,
+            'week_no' => $request->week,
+            'attendance_count' => $request->current,
+            'total_count' => $request->total,
+            'comment' => " ",
+        ]);
+        return redirect('/add-attendance/' . $request->section);
+    }
 
     public function addAttendance( $section_id){
         $user = Auth::user();
@@ -50,6 +64,7 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $userrole = $user->userRole();
         $attendances = Attendance::where('section_id', $section_id)->where('student_id', $user->id)->get();
+    }
 
     public function show( $c_id){
         $user = Auth::user();
@@ -70,11 +85,11 @@ class AttendanceController extends Controller
             ->get();
         $courseinfo = Course::where('id', $c_id)->select('title', 'code')->first();
         
-        return view('course-attendance', compact('userrole', 'user','data', 'courseinfo'));
+        // return view('course-attendance', compact('userrole', 'user','data', 'courseinfo'));
 
 
         return view('course-attendance', [
-            'userrole' => $userrole, 'user' => $user, 'attendances' => $attendances
+            'userrole' => $userrole, 'user' => $user, 'attendances' => $data, 'courseinfo' => $courseinfo
         ]);
     }
 }
