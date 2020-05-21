@@ -90,10 +90,6 @@
                                                     <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Mark Present</button>
                                                 </td>
                                             </tr>
-                                           
-
-                                            
-                                           
                                             </tbody>
                                         </table>
                                     </div>
@@ -153,9 +149,6 @@
                                                 <td class="text-muted">3/4</td>
                                                 <td class=""></td>
                                             </tr>
-
-                                            
-                                           
                                             </tbody>
                                         </table>
                                     </div>
