@@ -49,6 +49,12 @@ class HomeController extends Controller
                     }
                 }
             }
+            $cal = [];
+            for( $i = 0; $i < 7; $i++){
+                for( $j = 0; $j < 10; $j++){
+                    
+                }
+            }
 
             return view('student-home', [
                 'userrole' => $userrole, 'user' => $user, 'todays_sections' => $todays_sections,
