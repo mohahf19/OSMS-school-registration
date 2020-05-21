@@ -41,6 +41,10 @@
                                                 <td class="text-muted">{{$row->comment}}</td>
                                             </tr>
                                             @empty
+                                            <div class="card-header">No grades available.
+                                                <div class="btn-actions-pane-right">
+                                                </div>
+                                            </div>
                                             @endforelse
                                             
 
