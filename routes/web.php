@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //For bilal's testing
-Route::get('/test', function () {return view('ta-dashboard');});
+Route::get('/test', function () {return view('activity-calendar');});
 
 //For Auth
 Route::get('/login', 'LoginController@index')->name('login-index');
@@ -32,6 +32,7 @@ Route::get('/course-sections/{course_id}', 'HomeController@courseSections')->nam
 
 
 Route::get('/meals', 'HomeController@meals');
+Route::get('/activities', 'ActivitiesController@index');
 Route::get('/dorms', 'HomeController@dorms');
 Route::get('/payments', 'HomeController@payments');
 Route::get('/home/current-courses', 'HomeController@CurrCourses');
