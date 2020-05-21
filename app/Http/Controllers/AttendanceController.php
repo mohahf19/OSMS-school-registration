@@ -25,6 +25,20 @@ class AttendanceController extends Controller
             'userrole' => $userrole, 'user' => $user, 'attendance' => $attendances
         ]);
     }
+    public function addAttendanceSubmit( Request $request){
+        $section = Section::where('id', $request->section)->first();
+        $attendance = Attendance::create([
+            'student_id' => $request->student,
+            'course_id' => $section->course_id,
+            'section_id' => $request->section,
+            'semester_id' => 1,
+            'week_no' => $request->week,
+            'attendance_count' => $request->current,
+            'total_count' => $request->total,
+            'comment' => " ",
+        ]);
+        return redirect('/add-attendance/' . $request->section);
+    }
 
     public function addAttendance( $section_id){
         $user = Auth::user();
