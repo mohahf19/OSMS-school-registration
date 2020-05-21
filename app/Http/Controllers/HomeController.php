@@ -32,6 +32,7 @@ class HomeController extends Controller
             foreach ($courses as $c) {
                 $secs = Section::all()->where('course_id', $c->course_id)
                     ->where('section_code', $c->section_id);
+                
                 if (!$secs->isEmpty()) {
                     $t = $secs->first()->timeslot_id;
 
