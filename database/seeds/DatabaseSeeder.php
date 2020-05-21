@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TimeslotSeeder::class);
         $this->call(AttendSeeder::class);
         $this->call(RegisteredSeeder::class);
+        $this->call(TeachesSeeder::class);
+        $this->call(TutorsSeeder::class);
     }
 }
