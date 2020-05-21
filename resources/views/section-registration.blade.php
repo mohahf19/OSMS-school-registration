@@ -30,16 +30,19 @@
                   </thead>
                   <tbody>
                      <div class="scrollbar-container ps--active-y">
+                     <form action="/register-course" method = "post">
+                        @csrf
                         @foreach( $sections as $section)
                         <tr>
                            <td class="text-center text-muted">{{ $section->section_code }}</td>
-                           <td class="text-center text-muted">Okan Tekman</td>
+                           <td class="text-center text-muted">Teddy Westside</td>
                            <td class="text-center text-muted">{{ $section->quota }}</td>
                            <td class="text-center">
-                              <button type="button" id="PopoverCustomT-1" class="btn btn-success btn-sm">Select</button>
+                           <button name="selected" value="{{$section->id}}" type="submit">Select</button>
                            </td>
                         </tr>
                         @endforeach
+                     </form>
                      </div>
                   </tbody>
                </table>

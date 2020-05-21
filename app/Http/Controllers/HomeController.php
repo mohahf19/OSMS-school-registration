@@ -9,6 +9,8 @@ use App\Teaches;
 use App\Timeslot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -107,7 +109,12 @@ class HomeController extends Controller
     public function courseSections($course_id)
     {
         $course = Course::where('id', $course_id)->first();
-        $sections = Section::where('course_id', $course_id)->get();
+        $sections = Section::where('course_id', $course_id)
+                    ->where('quota', '>', 0)
+                    // ->select('sections.id as section_id', 'sections.*')
+                    // ->join('instructors', 'instructors.id', '=', 'instructor_id')
+                    // ->join('users', 'users.id', '=', 'instructors.user_id')
+                    ->get();
         if ($sections && $course) {
             $user = Auth::user();
             $userrole = $user->userRole();
@@ -210,7 +217,30 @@ class HomeController extends Controller
 
         $newgpa = ($student->grade_points + $newpoints) / ($student->total_credits + $newcredits);
 
-
+        
         return view('gpa-calculator', compact('user', 'student', 'courses', 'newgpa'));
+    }
+
+    public function registerSection(){
+        $user = Auth::user();
+        $student = $user->userRole();
+
+        $sec_id = request()->all()['selected'];
+
+        $sec = Section::where('id', $sec_id)->first();
+
+        $course_id = $sec->course_id;
+        $sec_code = $sec->section_code;
+
+
+        DB::table('registered')->insert([
+            'st_id' => 22001000,
+            'course_id' => $course_id,
+            'section_id' => $sec_code,
+            'semester' => "Spring",
+            'year' => 2000,
+        ]);
+
+        return redirect('/home');
     }
 }
