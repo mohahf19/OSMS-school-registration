@@ -496,7 +496,7 @@
                                     Activities
                                 </a>
                             </li>
-                            <li class="app-sidebar__heading">Document Order</li>
+                            <!-- <li class="app-sidebar__heading">Document Order</li>
                             <li>
                                 <a href="forms-controls.html">
                                     <i class="metismenu-icon pe-7s-angle-right">
@@ -508,7 +508,7 @@
                                     <i class="metismenu-icon pe-7s-angle-right">
                                     </i>Student Certificate
                                 </a>
-                            </li>
+                            </li> -->
 
                             <li class="app-sidebar__heading">Others</li>
                             <li>
