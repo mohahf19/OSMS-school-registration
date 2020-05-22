@@ -29,17 +29,3 @@ class TutorListController extends Controller
         ]);
     }
 }
-
-// $tas = TA::all();
-//         $tutor = tutors::all();
-//         foreach( $tas as $t){
-//             $u = User::where('id', $t->user_id)->first();
-//             $t->user = $u;
-//             foreach( $tutor as $tutor){
-//                 $tut = Tutors::where('ta_id', $t->id)->first();
-//                 $c = Course::where('id', $tut->course_id)->first();
-//                 $t->course = $c;
-//             }
-//         }
-        
-        

@@ -54,3 +54,5 @@ Route::get('/payments', 'HomeController@payments')->middleware('auth');
 Route::get('/home/current-courses', 'HomeController@CurrCourses')->middleware('auth');
 Route::get('/home/gpacalc', 'HomeController@gpacalc')->middleware('auth');
 Route::post('/home/gpacalc', 'HomeController@gpacalculate')->middleware('auth');
+
+Route::get('/home/transcript', 'HomeController@transcript')->middleware('auth');

@@ -270,4 +270,15 @@ class HomeController extends Controller
 
         return redirect('/home');
     }
+
+    public function transcript(){
+        $user = Auth::user();
+        $data = Registered::where('st_id', $user->id)
+            ->whereNotNull('letter_grade')  
+            ->join('courses', 'courses.id', '=', 'course_id')
+            ->select('code', 'title','letter_grade')
+            ->get();
+
+        return view('view-transcript', compact('user', 'data'));
+    }
 }

@@ -477,17 +477,17 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="dashboard-boxes.html">
+                                <a href="/home/transcript">
                                     <i class="metismenu-icon pe-7s-angle-right"></i>
                                     Current Transcript
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="/attendance">
                                     <i class="metismenu-icon pe-7s-angle-right"></i>
                                     Attendance
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="/activities">
                                     <i class="metismenu-icon pe-7s-angle-right"></i>

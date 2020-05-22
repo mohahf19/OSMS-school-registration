@@ -320,7 +320,7 @@
                 </div>
             </div>
             <div>
-                <p>Welcome back! Log in to your account to view today's clients:</p>
+                <p>Welcome back!</p>
                 <div class="floating-label">
                     <input type="hidden" name="login_type" id="login-type" value="1" />
                     <input placeholder="ID" type="number" name="email" id="email" value="22001000" required>
