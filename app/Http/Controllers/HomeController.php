@@ -268,4 +268,16 @@ class HomeController extends Controller
 
         return view('view-transcript', compact('user', 'data'));
     }
+
+    public function removeCourse($course_id){
+        $user = Auth::user();
+        
+        $sql = "
+        DELETE FROM registered
+        WHERE st_id = ".$user->id." AND course_id = ".$course_id.";
+        ";
+        DB::unprepared($sql);
+
+        return redirect()->back();
+    }
 }

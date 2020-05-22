@@ -53,6 +53,7 @@
                                                 <td class="text-center">
                                                     <a href="/view-attendance/{{$todays_courses[$i]->id}}" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Attendance</a>
                                                     <a href="/view-grades/{{$todays_courses[$i]->id}}" id="PopoverCustomT-1" class="btn btn-warning btn-sm">Grades</a>
+                                                    <a href="/remove-course/{{$todays_courses[$i]->id}}" onclick="return confirm('Are you sure you want to drop {{$todays_courses[$i]->code}}?')" id="PopoverCustomT-1" class="btn btn-secondary btn-sm">Remove Course</a>
                                                 </td>
 
                                             </tr>
