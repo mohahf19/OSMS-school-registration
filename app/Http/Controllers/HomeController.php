@@ -139,9 +139,17 @@ class HomeController extends Controller
 
     public function courses()
     {
-        $courses = Course::all();
         $user = Auth::user();
         $userrole = $user->userRole();
+        $allcourses = Course::all();
+        $registered = Registered::all()->where('st_id', $user->id)->pluck('course_id');
+        $courses = collect(new Course);
+        foreach ($allcourses as $c){
+            if (!$registered->contains($c->id)){
+                $courses->add($c);
+            }
+        }
+        
         return view('course-registration', ['courses' => $courses, 'userrole' => $userrole, 'user' => $user]);
     }
     public function courseSections($course_id)
@@ -289,9 +297,22 @@ class HomeController extends Controller
         $data = Registered::where('st_id', $user->id)
             ->whereNotNull('letter_grade')
             ->join('courses', 'courses.id', '=', 'course_id')
+            //->select('code', 'title','letter_grade')
             ->select('code', 'title', 'letter_grade')
             ->get();
 
         return view('view-transcript', compact('user', 'data'));
+    }
+
+    public function removeCourse($course_id){
+        $user = Auth::user();
+        
+        $sql = "
+        DELETE FROM registered
+        WHERE st_id = ".$user->id." AND course_id = ".$course_id.";
+        ";
+        DB::unprepared($sql);
+
+        return redirect()->back();
     }
 }

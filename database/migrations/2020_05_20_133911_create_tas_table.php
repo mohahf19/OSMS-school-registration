@@ -15,7 +15,7 @@ class CreateTasTable extends Migration
     {
         Schema::create('tas', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->string('title');
             $table->timestamps();
         });

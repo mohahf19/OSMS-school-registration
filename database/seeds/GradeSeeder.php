@@ -20,6 +20,13 @@ class GradeSeeder extends Seeder
         ]);
 
         DB::table('grades')->insert([
+            'student_id'=> 22001003,
+            'assessment_id' => 1, 
+            'grade' => 0,
+            'comment' => 'bigger rip'
+        ]);
+
+        DB::table('grades')->insert([
             'student_id'=> 22001000,
             'assessment_id' => 2, 
             'grade' => 100,
@@ -29,7 +36,7 @@ class GradeSeeder extends Seeder
             'student_id'=> 22001000,
             'assessment_id' => 4, 
             'grade' => 88,
-            'comment'=> 'dont submit late br'
+            'comment'=> 'dont submit late br0'
         ]);
     }
 }

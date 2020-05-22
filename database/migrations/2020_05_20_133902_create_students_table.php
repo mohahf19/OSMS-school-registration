@@ -16,12 +16,25 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('user_id');
+            //$table->bigInteger('user_id');
             $table->float('grade_points');
             $table->integer('total_credits');
 
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+
+        $trigger = "
+        CREATE TRIGGER registered_student_delete
+        BEFORE DELETE
+            ON students FOR EACH ROW
+        BEGIN
+            DELETE FROM registered
+            WHERE registered.st_id = OLD.user_id;
+        END;
+        ";
+
+        DB::unprepared($trigger);
     }
 
     /**
