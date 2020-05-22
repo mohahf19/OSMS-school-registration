@@ -55,11 +55,11 @@ class CreateUsersTable extends Migration
 
         $trigger1 = "
         CREATE TRIGGER user_student_delete
-        AFTER DELETE
+        BEFORE DELETE
             ON users FOR EACH ROW
         BEGIN
-            DELETE FROM student
-            WHERE student.user_id = OLD.id;
+            DELETE FROM students
+            WHERE students.user_id = OLD.id;
         END;
         ";
 
@@ -67,7 +67,7 @@ class CreateUsersTable extends Migration
 
         $trigger2 = "
         CREATE TRIGGER user_ta_delete
-        AFTER DELETE
+        BEFORE DELETE
             ON users FOR EACH ROW
         BEGIN
             DELETE FROM tas
