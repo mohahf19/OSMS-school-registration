@@ -14,13 +14,25 @@ class CreateRegisteredsTable extends Migration
     public function up()
     {
         Schema::create('registered', function (Blueprint $table) {
-            $table->integer('st_id');
-            $table->integer('course_id');
+            $table->foreignId('st_id')->references('user_id')->on('students');
+            $table->foreignId('course_id')->references('id')->on('courses');
             $table->integer('section_id');
             $table->string('semester');
             $table->integer('year');
             $table->string('letter_grade')->nullable();
         });
+
+        $trigger = "
+        CREATE TRIGGER course_reg_delete
+        BEFORE DELETE
+            ON registered FOR EACH ROW
+        BEGIN
+            DELETE FROM attendances
+            WHERE attendances.student_id = OLD.st_id AND OLD.course_id = attendances.course_id;
+        END;
+        ";
+
+        DB::unprepared($trigger);
     }
 
     /**

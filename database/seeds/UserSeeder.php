@@ -86,6 +86,8 @@ class UserSeeder extends Seeder
             'grade_points' => 130.8,
             'total_credits' => 40,
         ]);
+
+
         DB::table('tas')->insert([
             'user_id' => $user2->id,
             'title' => 'Senior TA'

@@ -49,9 +49,36 @@ class CreateUsersTable extends Migration
             `updated_at` timestamp NULL DEFAULT NULL,
             PRIMARY KEY (`id`),
             UNIQUE KEY `users_email_unique` (`email`)
-          ) ENGINE=InnoDB AUTO_INCREMENT=22001006 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+          ) ENGINE=InnoDB AUTO_INCREMENT=22001000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
           
         DB::statement($sql);
+
+        $trigger1 = "
+        CREATE TRIGGER user_student_delete
+        BEFORE DELETE
+            ON users FOR EACH ROW
+        BEGIN
+            DELETE FROM students
+            WHERE students.user_id = OLD.id;
+        END;
+        ";
+
+        DB::unprepared($trigger1);
+
+        $trigger2 = "
+        CREATE TRIGGER user_ta_delete
+        BEFORE DELETE
+            ON users FOR EACH ROW
+        BEGIN
+            DELETE FROM tas
+            WHERE tas.user_id = OLD.id;
+        END;
+        ";
+
+        DB::unprepared($trigger2);
+
+
+    
     }
 
     /**
