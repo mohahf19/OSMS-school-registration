@@ -103,7 +103,7 @@
                                 @for( $j = 1; $j <= 7; $j++)
                                 <td class="text-center">
                                     @if( strcmp($calendar[$count], "") )
-                                        <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">{{$calendar[$count]}}</button>
+                                        <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">{!! nl2br($calendar[$count]) !!}</button>
                                     @endif
                                 </td>
                                 <?php $count++; ?>
