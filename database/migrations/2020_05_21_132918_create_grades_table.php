@@ -19,6 +19,7 @@ class CreateGradesTable extends Migration
             $table->foreignId('assessment_id');
             $table->float('grade');
             $table->string('comment')->nullable();
+            $table->timestamps();
         });
     }
 

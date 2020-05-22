@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
@@ -57,6 +57,7 @@
 
                                             </tr>
 
+
                                         <?php endfor; ?>
 
                                     </div>
@@ -69,6 +70,46 @@
 
 
                 </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="btn-actions-pane-right">
+                </div>
+                <div class="table-responsive">
+                    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center"></th>
+                                <th class="text-center">MONDAY</th>
+                                <th class="text-center">TUESDAY</th>
+                                <th class="text-center">WEDNESDAY</th>
+                                <th class="text-center">THURSDAY</th>
+                                <th class="text-center">FRIDAY</th>
+                                <th class="text-center">SATURDAY</th>
+                                <th class="text-center">SUNDAY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for( $i = 8; $i < 17; $i++)
+                            <tr>
+                                <td class="text-center">
+                                    <p>{{$i}}:40 - {{$i + 1}}.30</p>
+                                </td>
+                                @for( $j = 0; $j < 7; $j++)
+                                <td class="text-center">
+                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">POLS 101-4 (T-272)</button>
+                                </td>
+                                @endfor
+                            </tr>
+                            @endfor
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>

@@ -35,8 +35,12 @@ Route::get('/profile', 'ProfileController@index')->middleware('auth');
 Route::post('/profile-update', 'ProfileController@profileUpdate')->middleware('auth');
 
 Route::get('add-attendance/{section_id}', 'AttendanceController@addAttendance')->middleware('auth');
-Route::get('add-grades/{section_id}', 'GradesController@addGrades')->middleware('auth');
+Route::get('add-grades-index/{section_id}', 'GradesController@addGradesIndex')->middleware('auth');
+Route::get('add-grades-course/{section_id}/{assessment_id}', 'GradesController@addGradesCourse')->middleware('auth');
+
 Route::post('update-attendance', 'AttendanceController@addAttendanceSubmit')->middleware('auth');
+Route::post('update-grades-submit', 'GradesController@addGradesSubmit')->middleware('auth');
+
 
 Route::get('view-attendance/{course_id}', 'AttendanceController@show')->middleware('auth');
 Route::get('view-grades/{course_id}', 'GradesController@show')->middleware('auth');
@@ -50,4 +54,3 @@ Route::get('/payments', 'HomeController@payments')->middleware('auth');
 Route::get('/home/current-courses', 'HomeController@CurrCourses')->middleware('auth');
 Route::get('/home/gpacalc', 'HomeController@gpacalc')->middleware('auth');
 Route::post('/home/gpacalc', 'HomeController@gpacalculate')->middleware('auth');
-
