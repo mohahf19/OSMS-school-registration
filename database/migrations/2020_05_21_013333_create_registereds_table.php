@@ -21,6 +21,18 @@ class CreateRegisteredsTable extends Migration
             $table->integer('year');
             $table->string('letter_grade')->nullable();
         });
+
+        $trigger = "
+        CREATE TRIGGER course_reg_delete
+        BEFORE DELETE
+            ON registered FOR EACH ROW
+        BEGIN
+            DELETE FROM attendances
+            WHERE attendances.student_id = OLD.st_id AND OLD.course_id = attendances.course_id;
+        END;
+        ";
+
+        DB::unprepared($trigger);
     }
 
     /**
