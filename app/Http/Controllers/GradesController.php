@@ -70,6 +70,8 @@ class GradesController extends Controller
             $courses->push((Course::all()->where('id', $c->course_id)->first()));
         }
         $averages = array();
+        $mins = array();
+        $maxs = array();
         if($courses->contains('id', $c_id)){ 
             //student signed up to requested course
             $assessments = Assessment::where('course_id', $c_id)->get();
@@ -77,6 +79,8 @@ class GradesController extends Controller
                 $id = $assessment->id;
                 $temp = Grade::where('assessment_id', $id);
                 $avg = $temp->avg('grade');
+                $mins[$id] = $temp->min('grade');
+                $maxs[$id] = $temp->max('grade');
                 $averages[$id] = $avg;
             }
             //$grades has the grades for the student
@@ -86,10 +90,11 @@ class GradesController extends Controller
                 ->where('student_id', $user->id)
                 ->where('course_id', $c_id)
                 ->get();
+            
 
         }
         $courseinfo = Course::where('id', $c_id)->select('title', 'code')->first();
         
-        return view('course-grades', compact('userrole', 'user', 'data', 'courseinfo', 'averages'));
+        return view('course-grades', compact('userrole', 'user', 'data', 'courseinfo', 'averages', 'mins', 'maxs'));
     }
 }

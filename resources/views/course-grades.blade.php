@@ -24,6 +24,8 @@
                                                 <th>Assessment</th>
                                                 <th>Grade</th>
                                                 <th>Total</th>
+                                                <th>Min</th>
+                                                <th>Max</th>
                                                 <th>Average</th>
                                                 <th>Comment</th>
                                             </tr>
@@ -33,10 +35,14 @@
                                              'quiz' => 'secondary' , 'project' =>'warning'] ?>
                                             @forelse ($data as $row) 
                                             <?php $avg = $averages[$row->id];?>
+                                            <?php $min = $mins[$row->id];?>
+                                            <?php $max = $maxs[$row->id];?>
                                             <tr>
                                                 <td class="text-muted"><div class="badge badge-{{$codes[$row->type]}}">{{$row->name}}</div></td>
                                                 <td class="text-muted">{{sprintf("%.2f", $row->grade)}}</td>
                                                 <td class="text-muted">{{$row->max_grade}}</td>
+                                                <td class="text-muted">{{$min}}</td>
+                                                <td class="text-muted">{{$max}}</td>
                                                 <td class="text-muted">{{$avg}}</td>
                                                 <td class="text-muted">{{$row->comment}}</td>
                                             </tr>
