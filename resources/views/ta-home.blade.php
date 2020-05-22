@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
@@ -34,6 +34,7 @@
                                     <div class="scrollbar-container ps--active-y">
 
                                         @foreach( $teaches as $t)
+                                        @if( $t != null)
                                         <tr>
                                             <td class="text-center text-muted">{{ $t->course->code}}</td>
 
@@ -51,7 +52,7 @@
                                             </td>
 
                                         </tr>
-
+                                        @endif
                                         @endforeach
 
 
@@ -65,6 +66,48 @@
 
 
                 </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="btn-actions-pane-right">
+                </div>
+                <div class="table-responsive">
+                    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center"></th>
+                                <th class="text-center">MONDAY</th>
+                                <th class="text-center">TUESDAY</th>
+                                <th class="text-center">WEDNESDAY</th>
+                                <th class="text-center">THURSDAY</th>
+                                <th class="text-center">FRIDAY</th>
+                                <th class="text-center">SATURDAY</th>
+                                <th class="text-center">SUNDAY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $count = 0; ?>
+                            @for( $i = 0; $i <= 23; $i++) <tr>
+                                <td class="text-center">
+                                    <p>{{$i}}:40 - {{$i + 1}}.30</p>
+                                </td>
+                                @for( $j = 1; $j <= 7; $j++) <td class="text-center">
+                                    @if( strcmp($calendar[$count], "") )
+                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">{!! nl2br($calendar[$count]) !!}</button>
+                                    @endif
+                                    </td>
+                                    <?php $count++; ?>
+                                    @endfor
+                                    </tr>
+                                    @endfor
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>

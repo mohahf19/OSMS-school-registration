@@ -58,3 +58,4 @@ Route::post('/home/gpacalc', 'HomeController@gpacalculate')->middleware('auth');
 Route::get('/home/transcript', 'HomeController@transcript')->middleware('auth');
 
 Route::get('/remove-course/{course_id}', 'HomeController@removeCourse');
+Route::get('/search', 'SearchController@search')->middleware('auth');

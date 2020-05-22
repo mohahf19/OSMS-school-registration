@@ -61,10 +61,12 @@
             </div>
             <div class="app-header__content">
                 <div class="app-header-left">
-                    <div class="search-wrapper">
+                    <div class="search-wrapper active">
                         <div class="input-holder">
-                            <input type="text" class="search-input" placeholder="Type to search">
+                            <form action="/search" method="get">
+                            <input type="text" name="val" class="search-input" placeholder="Type to search">
                             <button class="search-icon"><span></span></button>
+                            </form>
                         </div>
                         <button class="close"></button>
                     </div>
@@ -546,30 +548,6 @@
                             </a>
                         </li>
 
-
-                        <li class="app-sidebar__heading">Academic</li>
-                        <li>
-                            <a href="#">
-                                <i class="metismenu-icon pe-7s-angle-right"></i>
-                                Q&A Session
-                            </a>
-
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="metismenu-icon pe-7s-angle-right"></i>
-                                Attendance
-                            </a>
-
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="metismenu-icon pe-7s-angle-right"></i>
-                                Grade
-                            </a>
-
-                        </li>
-
                         <li class="app-sidebar__heading">Information</li>
                         <li>
                             <a href="#">
@@ -581,6 +559,12 @@
                             <a href="dashboard-boxes.html">
                                 <i class="metismenu-icon pe-7s-angle-right"></i>
                                 View Sections
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-boxes.html">
+                                <i class="metismenu-icon pe-7s-angle-right"></i>
+                                Tasks
                             </a>
                         </li>
                         <li class="app-sidebar__heading">Others</li>

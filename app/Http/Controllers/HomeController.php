@@ -7,6 +7,7 @@ use App\Section;
 use App\Registered;
 use App\Teaches;
 use App\Timeslot;
+use App\Tutors;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -34,7 +35,7 @@ class HomeController extends Controller
             foreach ($courses as $c) {
                 $secs = Section::all()->where('course_id', $c->course_id)
                     ->where('section_code', $c->section_id);
-                
+
                 if (!$secs->isEmpty()) {
                     $t = $secs->first()->timeslot_id;
 
@@ -50,57 +51,88 @@ class HomeController extends Controller
                 }
             }
             $cal = [];
-            for( $i = 0; $i < 7; $i++){
-                for( $j = 0; $j < 10; $j++){
-                    
+            for ($j = 0; $j <= 23; $j++) {
+                for ($i = 1; $i <= 7; $i++) {
+                    $input = "";
+                    for ($a = 0; $a < count($todays_slots); $a++) {
+                        if ($todays_slots[$a]->day == $i && $todays_slots[$a]->time == $j) {
+                            $input .= $todays_courses[$a]->code . "(" . $todays_sections[$a]->classroom . ")\n";
+                        }
+                    }
+                    array_push($cal, $input);
                 }
             }
 
             return view('student-home', [
                 'userrole' => $userrole, 'user' => $user, 'todays_sections' => $todays_sections,
-                'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots
+                'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots, 'calendar' => $cal
             ]);
         } else if ($user->login_type == 2) {
-            $courses = Registered::all()->where('st_id', $user->id)->whereNull('letter_grade');
-            $todays_courses = collect(new Course);
-            $todays_sections = collect(new Section);
-            $todays_slots = collect(new Timeslot);
-
-            foreach ($courses as $c) {
-                $secs = Section::all()->where('course_id', $c->course_id)
-                    ->where('section_code', $c->section_id);
-                if (!$secs->isEmpty()) {
-                    $t = $secs->first()->timeslot_id;
-
-                    //get available time slots
-                    $ts = Timeslot::all()->where('id', $t);
-
-                    //if there is today
-                    if (!$ts->isEmpty()) {
-                        $todays_sections->push($secs->first());
-                        $todays_courses->push((Course::all()->where('id', $c->course_id)->first()));
-                        $todays_slots->push($ts->first());
-                    }
+            $days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SAT"];
+            $tutors = Tutors::where('ta_id', $userrole->id)->get();
+            for ($i = 0; $i < count($tutors); $i++) {
+                $t = $tutors[$i];
+                $c = Course::where('id', $t->course_id)->first();
+                $s = Section::where('course_id', $c->id)->first();
+                if ($s) {
+                    $timeSlot = Timeslot::where('id', $s->timeslot_id)->first();
+                    $s->day = $days[$timeSlot->day - 1];
+                    $t->timeSlot = $timeSlot;
+                    $s->time = $timeSlot->time < 10 ? ("0" . $timeSlot->time . ":40") : ($timeSlot->time . ":40");
+                    $t->course = $c;
+                    $t->section = $s;
+                } else {
+                    $tutors[$i] = null;
                 }
             }
-            return view('student-home', [
-                'userrole' => $userrole, 'user' => $user, 'todays_sections' => $todays_sections,
-                'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots
+
+            $cal = [];
+            for ($j = 0; $j <= 23; $j++) {
+                for ($i = 1; $i <= 7; $i++) {
+                    $input = "";
+                    foreach ($tutors as $t) {
+                        if (!($t == null)) {
+                            if ($t->timeSlot->day == $i && $t->timeSlot->time == $j) {
+                                $input .= $t->course->code . "(" . $t->section->classroom . ")\n";
+                            }
+                        }
+                    }
+                    array_push($cal, $input);
+                }
+            }
+
+            return view('ta-home', [
+                'userrole' => $userrole, 'user' => $user, 'teaches' => $tutors, 'calendar' => $cal
             ]);
         } else {
             $days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SAT"];
             $teaches = Teaches::where('instructor_id', $userrole->id)->get();
-            foreach( $teaches as $t){
+            foreach ($teaches as $t) {
                 $s = Section::where('id', $t->section_id)->first();
                 $c = Course::where('id', $s->course_id)->first();
                 $timeSlot = Timeslot::where('id', $s->timeslot_id)->first();
-                $s->day = $days[ $timeSlot->day - 1];
+                $s->day = $days[$timeSlot->day - 1];
+                $t->timeSlot = $timeSlot;
                 $s->time = $timeSlot->time < 10 ? ("0" . $timeSlot->time . ":40") : ($timeSlot->time . ":40");
                 $t->course = $c;
                 $t->section = $s;
             }
+
+            $cal = [];
+            for ($j = 0; $j <= 23; $j++) {
+                for ($i = 1; $i <= 7; $i++) {
+                    $input = "";
+                    foreach ($teaches as $t) {
+                        if ($t->timeSlot->day == $i && $t->timeSlot->time == $j) {
+                            $input .= $t->course->code . "(" . $t->section->classroom . ")\n";
+                        }
+                    }
+                    array_push($cal, $input);
+                }
+            }
+
             return view('instructor-home', [
-                'userrole' => $userrole, 'user' => $user, 'teaches' => $teaches,
+                'userrole' => $userrole, 'user' => $user, 'teaches' => $teaches, 'calendar' => $cal
             ]);
         }
     }
@@ -124,11 +156,11 @@ class HomeController extends Controller
     {
         $course = Course::where('id', $course_id)->first();
         $sections = Section::where('course_id', $course_id)
-                    ->where('quota', '>', 0)
-                    // ->select('sections.id as section_id', 'sections.*')
-                    // ->join('instructors', 'instructors.id', '=', 'instructor_id')
-                    // ->join('users', 'users.id', '=', 'instructors.user_id')
-                    ->get();
+            ->where('quota', '>', 0)
+            // ->select('sections.id as section_id', 'sections.*')
+            // ->join('instructors', 'instructors.id', '=', 'instructor_id')
+            // ->join('users', 'users.id', '=', 'instructors.user_id')
+            ->get();
         if ($sections && $course) {
             $user = Auth::user();
             $userrole = $user->userRole();
@@ -182,7 +214,7 @@ class HomeController extends Controller
                 }
             }
         }
-        return view('student-home', [
+        return view('view-courses', [
             'userrole' => $userrole, 'user' => $user, 'todays_sections' => $todays_sections,
             'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots
         ]);
@@ -231,11 +263,12 @@ class HomeController extends Controller
 
         $newgpa = ($student->grade_points + $newpoints) / ($student->total_credits + $newcredits);
 
-        
+
         return view('gpa-calculator', compact('user', 'student', 'courses', 'newgpa'));
     }
 
-    public function registerSection(){
+    public function registerSection()
+    {
         $user = Auth::user();
         $student = $user->userRole();
 
@@ -258,12 +291,14 @@ class HomeController extends Controller
         return redirect('/home');
     }
 
-    public function transcript(){
+    public function transcript()
+    {
         $user = Auth::user();
         $data = Registered::where('st_id', $user->id)
-            ->whereNotNull('letter_grade')  
+            ->whereNotNull('letter_grade')
             ->join('courses', 'courses.id', '=', 'course_id')
             //->select('code', 'title','letter_grade')
+            ->select('code', 'title', 'letter_grade')
             ->get();
 
         return view('view-transcript', compact('user', 'data'));
