@@ -61,10 +61,12 @@
             </div>
             <div class="app-header__content">
                 <div class="app-header-left">
-                    <div class="search-wrapper">
+                    <div class="search-wrapper active">
                         <div class="input-holder">
-                            <input type="text" class="search-input" placeholder="Type to search">
+                            <form action="/search" method="get">
+                            <input type="text" name="val" class="search-input" placeholder="Type to search">
                             <button class="search-icon"><span></span></button>
+                            </form>
                         </div>
                         <button class="close"></button>
                     </div>

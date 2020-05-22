@@ -206,7 +206,7 @@ class HomeController extends Controller
                 }
             }
         }
-        return view('student-home', [
+        return view('view-courses', [
             'userrole' => $userrole, 'user' => $user, 'todays_sections' => $todays_sections,
             'todays_courses' => $todays_courses, 'todays_slots' => $todays_slots
         ]);

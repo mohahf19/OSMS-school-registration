@@ -56,3 +56,5 @@ Route::get('/home/gpacalc', 'HomeController@gpacalc')->middleware('auth');
 Route::post('/home/gpacalc', 'HomeController@gpacalculate')->middleware('auth');
 
 Route::get('/home/transcript', 'HomeController@transcript')->middleware('auth');
+
+Route::get('/search', 'SearchController@search')->middleware('auth');
