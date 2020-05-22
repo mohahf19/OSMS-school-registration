@@ -30,7 +30,7 @@ class CreateStudentsTable extends Migration
             ON students FOR EACH ROW
         BEGIN
             DELETE FROM registered
-            WHERE registered.st_id = OLD.id;
+            WHERE registered.st_id = OLD.user_id;
         END;
         ";
 
