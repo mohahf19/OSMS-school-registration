@@ -53,14 +53,6 @@ class RegisteredSeeder extends Seeder
             'letter_grade' => NULL
         ]);
 
-        DB::table('registered')->insert([
-            'st_id' => $user1->id,
-            'course_id' => 7,
-            'section_id' => 1,
-            'semester' => "Spring",
-            'year' => 2017,
-            'letter_grade' => 'A+'
-        ]);
 
         DB::table('registered')->insert([
             'st_id' => $user1->id,

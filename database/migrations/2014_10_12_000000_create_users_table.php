@@ -49,7 +49,7 @@ class CreateUsersTable extends Migration
             `updated_at` timestamp NULL DEFAULT NULL,
             PRIMARY KEY (`id`),
             UNIQUE KEY `users_email_unique` (`email`)
-          ) ENGINE=InnoDB AUTO_INCREMENT=22001006 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+          ) ENGINE=InnoDB AUTO_INCREMENT=22001000 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
           
         DB::statement($sql);
 
