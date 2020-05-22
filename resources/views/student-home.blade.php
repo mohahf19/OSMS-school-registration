@@ -94,15 +94,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for( $i = 8; $i < 17; $i++)
+                            <?php $count = 0; ?>
+                            @for( $i = 0; $i <= 23; $i++)
                             <tr>
                                 <td class="text-center">
                                     <p>{{$i}}:40 - {{$i + 1}}.30</p>
                                 </td>
-                                @for( $j = 0; $j < 7; $j++)
+                                @for( $j = 1; $j <= 7; $j++)
                                 <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">POLS 101-4 (T-272)</button>
+                                    @if( strcmp($calendar[$count], "") )
+                                        <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">{{$calendar[$count]}}</button>
+                                    @endif
                                 </td>
+                                <?php $count++; ?>
                                 @endfor
                             </tr>
                             @endfor

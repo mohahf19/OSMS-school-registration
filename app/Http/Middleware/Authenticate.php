@@ -19,7 +19,7 @@ class Authenticate extends Middleware
         if( Auth::user()){
             return $next($request);
         } else {
-            return route('login-index');
+            return redirect('/login');
         }
     }
 }
