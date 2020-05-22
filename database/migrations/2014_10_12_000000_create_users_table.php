@@ -52,6 +52,33 @@ class CreateUsersTable extends Migration
           ) ENGINE=InnoDB AUTO_INCREMENT=22001006 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
           
         DB::statement($sql);
+
+        $trigger1 = "
+        CREATE TRIGGER user_student_delete
+        AFTER DELETE
+            ON users FOR EACH ROW
+        BEGIN
+            DELETE FROM student
+            WHERE student.user_id = OLD.id;
+        END;
+        ";
+
+        DB::unprepared($trigger1);
+
+        $trigger2 = "
+        CREATE TRIGGER user_ta_delete
+        AFTER DELETE
+            ON users FOR EACH ROW
+        BEGIN
+            DELETE FROM tas
+            WHERE tas.user_id = OLD.id;
+        END;
+        ";
+
+        DB::unprepared($trigger2);
+
+
+    
     }
 
     /**
