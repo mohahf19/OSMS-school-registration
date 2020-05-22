@@ -240,7 +240,6 @@ class HomeController extends Controller
 
         $courses = $this->getCurrentCourses();
 
-
         $newgpa = $student->gpa;
 
         return view('gpa-calculator', compact('user', 'student', 'courses', 'newgpa'));

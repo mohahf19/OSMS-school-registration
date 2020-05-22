@@ -55,7 +55,7 @@ class RegisteredSeeder extends Seeder
 
 
         DB::table('registered')->insert([
-            'st_id' => $user1->id,
+            'st_id' => $user4->id,
             'course_id' => 5,
             'section_id' => 3,
             'semester' => "Spring",
